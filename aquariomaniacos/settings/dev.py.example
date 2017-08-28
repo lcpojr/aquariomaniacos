@@ -1,0 +1,32 @@
+from .base import *
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '{{project_name}}',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': ''
+    }
+}
+
+INSTALLED_APPS += ('debug_toolbar',)
+
+INTERNAL_IPS = ('127.0.0.1')
+MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+DEBUG_TOOLBAR_CONFIG = {
+    'DISABLE_PANELS': [
+        'debug_toolbar.panels.redirects.RedirectsPanel',
+    ],
+    'SHOW_TEMPLATE_CONTEXT': True,
+}
+
+if DEBUG:
+    MIDDLEWARE_CLASSES += ('django_stackoverflow_trace.DjangoStackoverTraceMiddleware', )
+    DJANGO_STACKOVERFLOW_TRACE_SEARCH_SITE = "googlesearch"
+
+
+# django-extensions
+# ------------------------------------------------------------------------------
+INSTALLED_APPS += ['django_extensions', ]

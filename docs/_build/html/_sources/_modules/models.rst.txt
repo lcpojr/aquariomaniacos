@@ -1,0 +1,4 @@
+ExempleApp
+======
+.. automodule:: apps.exampleapp.models
+    :members:

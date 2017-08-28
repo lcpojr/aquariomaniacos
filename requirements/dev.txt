@@ -1,0 +1,6 @@
+-r base.txt
+
+#devlibs
+django-debug-toolbar==1.6
+django-extensions==1.7.7
+django_stackoverflow_trace-0.0.4

@@ -1,0 +1,5 @@
+-r base.txt
+
+django-debug-toolbar==1.6
+gunicorn==19.6.0
+gevent==1.2.1

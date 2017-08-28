@@ -1,0 +1,24 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="box-typical box-typical-full-height" style="min-height: 444px;">
+	<div class="add-model-screen tbl" style="height: 444px;">
+		<div class="add-model-screen-in">
+			<div class="add-model-screen-user">
+				<i class="font-icon font-icon-user"></i>
+			</div>
+			<h2>Bem Vindo ao painel administrativo da Estação Cedro</h2>
+			<p class="lead color-blue-grey-lighter">
+				Atravéz deste painel você será capaz de alterar criar publicações, projetos, galerias de fotos e verificar notificações de contato recebidas pelo website.
+				Clique sobre o menu <b>Gerência</b> para vericar e alterar as informações cadastradas e sobre o menu <b>Cadastrar</b> para criar novas publicações, projetos ou galerias.
+			</p>
+			<!--<a href="" class="btn"></a>-->
+		</div>
+	</div>
+</div><!--.box-typical-->
+{% endblock %}
+{% block javascript %}{% endblock %}

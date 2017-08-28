@@ -1,0 +1,74 @@
+<header class="site-header">
+    <div class="container-fluid">
+        <a href="/painel/" class="site-logo">
+            <img class="hidden-md-down" src="/static/painel/build/img/logo-2.png" alt="">
+            <img class="hidden-lg-up" src="/static/painel/build/img/logo-2-mob.png" alt="">
+        </a>
+
+        <button id="show-hide-sidebar-toggle" class="show-hide-sidebar hidden-xs-up">
+            <span>toggle menu</span>
+        </button>
+
+        <button class="hamburger hamburger--htla">
+            <span>toggle menu</span>
+        </button>
+        <div class="site-header-content">
+            <div class="site-header-content-in">
+                <div class="site-header-shown">
+                    <div class="dropdown user-menu">
+                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="/static/painel/build/img/avatar-2-64.png" alt="">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
+                        	<a class="dropdown-item" href="{% url 'website:home' %}"><span class="font-icon glyphicon glyphicon-home"></span>Website</a>
+                            <a class="dropdown-item" href="{% url 'painel:usuario-senha' %}"><span class="font-icon glyphicon glyphicon-lock"></span>Alterar Senha</a>
+                            <a class="dropdown-item" href="{% url 'painel:logout' %}"><span class="font-icon glyphicon glyphicon-log-out"></span>Sair</a>
+                        </div>
+                    </div>
+
+                    <button type="button" class="burger-right">
+                        <i class="font-icon-menu-addl"></i>
+                    </button>
+                </div><!--.site-header-shown-->
+
+                <div class="mobile-menu-right-overlay"></div>
+                <div class="site-header-collapsed">
+                    <div class="site-header-collapsed-in">
+                        <div class="dropdown dropdown-typical">
+                            <a class="dropdown-toggle" id="dd-header-marketing" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="font-icon font-icon-cogwheel"></span>
+                                <span class="lb">Gerência</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dd-header-marketing">
+                                <a class="dropdown-item" href="{% url 'painel:album-listar' %}">Albuns</a>
+                                <a class="dropdown-item" href="{% url 'painel:doacao-listar' %}">Doações</a>
+                                <a class="dropdown-item" href="{% url 'painel:contato-listar' %}">Mensagens</a>
+                                <a class="dropdown-item" href="{% url 'painel:projeto-listar' %}">Projetos</a>
+                                <a class="dropdown-item" href="{% url 'painel:publicacao-listar' %}">Publicações</a>
+                                <a class="dropdown-item" href="{% url 'painel:telefone-listar' %}">Telefones</a>
+                                {% if request.user.is_staff %}
+                                    <a class="dropdown-item" href="{% url 'painel:usuario-listar' %}">Usuários</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-rounded dropdown-toggle" id="dd-header-add" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cadastrar
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dd-header-add">
+                                <a class="dropdown-item" href="{% url 'painel:album-cadastrar' %}">Album</a>
+                                <a class="dropdown-item" href="{% url 'painel:projeto-cadastrar' %}">Projetos</a>
+                                <a class="dropdown-item" href="{% url 'painel:publicacao-cadastrar' %}">Publicações</a>
+                                <a class="dropdown-item" href="{% url 'painel:telefone-cadastrar' %}">Telefones</a>
+                                {% if request.user.is_staff %}
+                                    <a class="dropdown-item" href="{% url 'painel:usuario-cadastrar' %}">Usuários</a>
+                                {% endif %}                           	
+                            </div>
+                        </div>
+                        <!--.help-dropdown-->
+                    </div><!--.site-header-collapsed-in-->
+                </div><!--.site-header-collapsed-->
+            </div><!--site-header-content-in-->
+        </div><!--.site-header-content-->
+    </div><!--.container-fluid-->
+</header>

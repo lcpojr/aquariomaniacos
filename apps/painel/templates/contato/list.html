@@ -1,0 +1,137 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/lib/bootstrap-table/bootstrap-table.min.css">
+{% endblock %}
+{% block content %}
+{% if contatos %}
+<div class="box-typical box-typical-full-height" style="min-height: 444px;">
+	<section class="box-typical">
+		<div id="toolbar">
+			<div class="bootstrap-table-header">
+				Mensagens
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table id="table"
+			class="table table-striped"
+			data-toolbar="#toolbar"
+			data-search="true"
+			data-show-refresh="true"
+			data-show-toggle="true"
+			data-show-columns="true"
+			data-show-export="true"
+			data-detail-view="false"
+			data-detail-formatter="detailFormatter"
+			data-minimum-count-columns="2"
+			data-show-pagination-switch="true"
+			data-pagination="false"
+			data-id-field="id"
+			data-page-list="[10, 25, 50, 100, ALL]"
+			data-show-footer="false"
+			data-response-handler="responseHandler">
+				<thead>
+					<tr>
+						<th data-field="nome" data-sortable="true">Nome</th>
+						<th data-field="telefone" data-sortable="true">Telefone</th>
+						<th data-field="email" data-sortable="true">E-mail</th>
+						<th data-field="data" data-sortable="true">Data</th>
+						<th data-field="" data-sortable="true">Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for contato in contatos %}
+						{% if contato.is_visualizada %}
+							<tr>
+								<td>{{ contato.nome }}</td>
+								<td>{{ contato.telefone }}</td>
+								<td>{{ contato.email|default:'----' }}</td>
+								<td>{{ contato.data }}</td>
+								<td style="text-align: center; ">
+				                  <a href="{% url 'painel:contato-detalhes' contato.pk %}" class="like">
+				                    <i class="font-icon font-icon-eye"></i>
+				                  </a>				                  
+				                </td> 
+							</tr>
+						{% else %}
+							<tr>
+								<td><strong>{{ contato.nome }}</strong></td>
+								<td><strong>{{ contato.telefone }}</strong></td>
+								<td><strong>{{ contato.email|default:'----' }}</strong></td>
+								<td><strong>{{ contato.data }}</strong></td>
+								<td style="text-align: center; ">
+				                  <a href="{% url 'painel:contato-detalhes' contato.pk %}" class="like">
+				                    <i class="font-icon font-icon-eye"></i>
+				                  </a>				                  
+				                </td> 
+							</tr>
+						{% endif %}
+					{% endfor %}
+        		</tbody>
+			</table>
+		</div>
+	</section>
+	<nav aria-label="Page navigation example">
+	    <ul class="pagination">
+	      {% if contatos.has_previous %}
+	        <li class="page-item">
+	          <a class="page-link" href="?page={{ contatos.previous_page_number }}" aria-label="Previous">
+	            <span aria-hidden="true">&laquo;</span>
+	            <span class="sr-only">Anterior</span>
+	          </a>
+	        </li>
+	      {% else %}
+	        <li class="page-item disabled">
+	          <a class="page-link" href="" aria-label="Previous">
+	            <span aria-hidden="true">&laquo;</span>
+	            <span class="sr-only">Anterior</span>
+	          </a>
+	        </li>
+	      {% endif %}
+	      
+	      {% for page in contatos.paginator.page_range%}
+	        <li class="page-item {% if page == contatos.number %} active {% endif %}"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+	      {% endfor %}
+
+	      {% if contatos.has_next %}
+	        <li class="page-item">
+	          <a class="page-link" href="?page={{ contatos.next_page_number }}" aria-label="Next">
+	            <span aria-hidden="true">&raquo;</span>
+	            <span class="sr-only">Proximo</span>
+	          </a>
+	        </li>
+	      {% else %}
+	        <li class="page-item disabled">
+	          <a class="page-link" href="" aria-label="Next">
+	            <span aria-hidden="true">&raquo;</span>
+	            <span class="sr-only">Proximo</span>
+	          </a>
+	        </li>
+	      {% endif %}
+	    </ul>
+    </nav>
+</div>
+{% else %}
+<div class="box-typical box-typical-full-height" style="min-height: 444px;">
+	<div class="add-model-screen tbl" style="height: 444px;">
+		<div class="add-model-screen-in">
+			<div class="add-model-screen-user">
+				<i class="font-icon font-icon-user"></i>
+			</div>
+			<h2>Aqui serão listadas suas mensagens</h2>
+			<p class="lead color-blue-grey-lighter">
+				Parece que você ainda não recebeu nenhuma
+				<br>
+				<b>Mensagem</b>.
+			</p>
+			<!--<a href="" class="btn"></a>-->
+		</div>
+	</div>
+</div><!--.box-typical-->
+{% endif %}
+{% endblock %}
+{% block javascript %}
+<script src="/static/painel/build/js/lib/bootstrap-table/bootstrap-table.js"></script>
+<script src="/static/painel/build/js/lib/bootstrap-table/bootstrap-table-init.js"></script>
+{% endblock %}

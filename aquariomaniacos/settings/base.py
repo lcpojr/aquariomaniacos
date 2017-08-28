@@ -27,7 +27,7 @@ APPS_DIR = base_dir_join('apps')
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = [
-    ("""Admin""", 'contato@3ysoftwarehouse.com.br'),
+    ("""Admin""", 'i3lcontato@gmail.com.br'),
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -68,9 +68,9 @@ THIRD_PARTY_APPS = [
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
-    # custom users app
-    'apps.exampleapp',
     # Your stuff: custom apps go here
+    'apps.website',
+    'apps.painel',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

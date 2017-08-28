@@ -1,0 +1,38 @@
+{% extends "site/base.html" %} 
+{% load staticfiles %}
+
+{% block content %}
+		<div id="fh5co-portfolio">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
+						<h3>{{imagens.0.album.titulo}}</h3>
+						<p>{{imagens.0.album.data_album}}</p>
+					</div>
+				</div>
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-12">
+						<ul id="fh5co-portfolio-list">
+							{% for imagem in imagens %}
+								<div class="col-md-4">
+									<img class="imageZoom" src="/media/{{imagem.imagem}}" data-animate-effect="fadeIn"/>
+								</div>
+							{% endfor %}
+						</ul>		
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/static/site/css/custom.css">
+	<link rel="stylesheet" href="/static/site/css/zoomify.css">
+{% endblock %}
+
+{% block javascript %}
+<script src="/static/site/js/zoomify.js"></script>
+<script>
+	$('.imageZoom').zoomify();
+</script>
+{% endblock %}

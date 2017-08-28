@@ -1,0 +1,31 @@
+{% extends "registration/base_registration.html" %}
+{%load staticfiles%}
+{%block content%}
+    <form id="form-register" class="p-t-15" method="POST" role="form" next="{% url 'painel:home' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Usuário" id="{{ form.usuario.id_for_label }}" name="{{ form.usuario.html_name }}"/>
+            <small class="text-muted">{{ form.usuario.errors }}</small>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Senha" id="{{ form.email.id_for_label }}" name="{{ form.password.html_name }}"/>
+            <small class="text-muted">{{ form.password.errors }}</small>
+        </div>
+        <!--
+        <div class="form-group">
+            <div class="checkbox float-left">
+                <input type="checkbox" id="signed-in"/>
+                <label for="signed-in">Lembrar senha</label>
+            </div>
+            <div class="float-right reset">
+                <a href="#">Esqueci a senha.</a>
+            </div>
+        </div>
+        -->
+        <button type="submit" class="btn btn-rounded m-y-lg">Entrar</button>
+        <!--<p class="sign-note">Não tem uma conta? <a href="">Cadastre-se</a></p>-->
+        <!--<button type="button" class="close">
+            <span aria-hidden="true">&times;</span>
+        </button>-->
+    </form>
+{%endblock%}

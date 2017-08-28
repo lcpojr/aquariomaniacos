@@ -1,0 +1,663 @@
+{% extends "website/base.html" %} 
+{% load staticfiles %}
+
+{% block css %}
+	<link href="/static/website/css/custom.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+            <div class="container">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+            </div>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="img-responsive" src="/static/website/img/custom/slide1.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h1 class="carousel-title">Slide 1</h1>
+                                <p class="color-white">Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                            </div>
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Click Aqui...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/static/website/img/custom/slide2.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title">Slide 2</h2>
+                                <p class="color-white">Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                            </div>
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Click Aqui...</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/static/website/img/custom/slide3.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title">Slide 3</h2>
+                                <p class="color-white">Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                            </div>
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Click Aqui...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--========== SLIDER ==========-->
+
+        <!--========== PAGE LAYOUT ==========-->
+        <!-- About -->
+        <div id="about">
+            <div class="content-lg container">
+                <!-- Masonry Grid -->
+                <div class="masonry-grid row">
+                    <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 sm-margin-b-30">
+                        <div class="margin-b-60">
+                            <h2>Aquarismo</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
+                        </div>
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/aquarismo.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".2s">
+                    </div>
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                        <div class="margin-b-60">
+                          <h2>Lagos Ornamentais</h2>
+                          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>  
+                        </div>
+						 <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/lagos.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
+                    </div>
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                        <div class="margin-t-60 margin-b-60">
+                            <h2>Camping</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
+                        </div>
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/camping.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
+                    </div>
+				</div>
+                <!-- End Masonry Grid -->
+            </div>
+            
+            <div class="bg-color-sky-light">
+                <div class="content-lg container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 md-margin-b-60">
+                            <div class="margin-t-50 margin-b-30">
+                                <h2>Porque nós?</h2>
+                                <p>
+                                	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                            </div>
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">Leia mais...</a>
+                        </div>
+                        <div class="col-md-5 col-sm-7 col-md-offset-2">
+                            <!-- Accordion -->
+                            <div class="accordion">
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <h4 class="panel-title">
+                                                <a class="panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Motivo 1
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Motivo 2
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="headingThree">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    Motivo 3
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Accodrion -->
+                        </div>
+                    </div>
+                    <!--// end row -->
+                </div>
+            </div>
+        </div>
+        <!-- End About -->
+
+
+        <!-- Latest Products -->
+        <div id="products">
+            <div class="content-lg container">
+                <div class="row margin-b-40">
+                    <div class="col-sm-6">
+                        <h2>Projetos Recentes</h2>
+                        <p>
+                        	Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation
+                        </p>
+                    </div>
+                </div>
+                <!--// end row -->
+
+                <div class="row">
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive" src="/static/website/img/970x647/01.jpg" alt="Latest Products Image">
+                        </div>
+                        <h4><a href="#">Projeto 1</a> <span class="text-uppercase margin-l-20">Lago Ornamental</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Detalhes</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive" src="/static/website/img/970x647/02.jpg" alt="Latest Products Image">
+                        </div>
+                        <h4><a href="#">Projeto 2</a> <span class="text-uppercase margin-l-20">Lago Ornamental</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Detalhes</a>
+                    </div>
+                    <!-- End Latest Products -->
+
+                    <!-- Latest Products -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <div class="margin-b-20">
+                            <img class="img-responsive" src="/static/website/img/970x647/03.jpg" alt="Latest Products Image">
+                        </div>
+                        <h4><a href="#">Projeto 3</a> <span class="text-uppercase margin-l-20">Lago Ornamental</span></h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+                        <a class="link" href="#">Detalhes</a>
+                    </div>
+                    <!-- End Latest Products -->
+                </div>
+                <!--// end row -->
+
+	            <!-- Clients -->
+	            <div class="content-lg container">
+	                <!-- Swiper Clients -->
+	                <div class="swiper-slider swiper-clients">
+	                    <!-- Swiper Wrapper -->
+	                    <div class="swiper-wrapper">
+	                        <div class="swiper-slide">
+	                            <img class="swiper-clients-img" src="/static/website/img/clients/01.png" alt="Clients Logo">
+	                        </div>
+	                        <div class="swiper-slide">
+	                            <img class="swiper-clients-img" src="/static/website/img/clients/02.png" alt="Clients Logo">
+	                        </div>
+	                        <div class="swiper-slide">
+	                            <img class="swiper-clients-img" src="/static/website/img/clients/03.png" alt="Clients Logo">
+	                        </div>
+	                        <div class="swiper-slide">
+	                            <img class="swiper-clients-img" src="/static/website/img/clients/04.png" alt="Clients Logo">
+	                        </div>
+	                        <div class="swiper-slide">
+	                            <img class="swiper-clients-img" src="/static/website/img/clients/05.png" alt="Clients Logo">
+	                        </div>
+	                        <div class="swiper-slide">
+	                            <img class="swiper-clients-img" src="/static/website/img/clients/06.png" alt="Clients Logo">
+	                        </div>
+	                    </div>
+	                    <!-- End Swiper Wrapper -->
+	                </div>
+	                <!-- End Swiper Clients -->
+	            </div>
+	            <!-- End Clients -->
+            </div>
+
+        </div>
+        <!-- End Latest Products -->
+
+        <!-- Services -->
+        <div id="services">
+            <div class="bg-color-sky-light" data-auto-height="true">
+                <div class="content-lg container">
+                    <div class="row margin-b-40">
+                        <div class="col-sm-6">
+                            <h2>Serviços</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
+                        </div>
+                    </div>
+                    <!--// end row -->
+
+                    <div class="row row-space-1 margin-b-2">
+                        <div class="col-sm-4 sm-margin-b-2">
+                            <div class="service" data-height="height">
+                                <div class="service-element">
+                                    <i class="service-icon icon-chemistry"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Company Formation</h3>
+                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                </div>
+                                <a href="#" class="content-wrapper-link"></a>    
+                            </div>
+                        </div>
+                        <div class="col-sm-4 sm-margin-b-2">
+                            <div class="service bg-color-base" data-height="height">
+                                <div class="service-element">
+                                    <i class="service-icon color-white icon-screen-tablet"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3 class="color-white">Stuff Management</h3>
+                                    <p class="color-white margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                </div>
+                                <a href="#" class="content-wrapper-link"></a>    
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="service" data-height="height">
+                                <div class="service-element">
+                                    <i class="service-icon icon-badge"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>KPI Optimization</h3>
+                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                </div>
+                                <a href="#" class="content-wrapper-link"></a>    
+                            </div>
+                        </div>
+                    </div>
+                    <!--// end row -->
+
+                    <div class="row row-space-1">
+                        <div class="col-sm-4 sm-margin-b-2">
+                            <div class="service" data-height="height">
+                                <div class="service-element">
+                                    <i class="service-icon icon-notebook"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Information Security</h3>
+                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                </div>
+                                <a href="#" class="content-wrapper-link"></a>    
+                            </div>
+                        </div>
+                        <div class="col-sm-4 sm-margin-b-2">
+                            <div class="service" data-height="height">
+                                <div class="service-element">
+                                    <i class="service-icon icon-speedometer"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Recrutinment</h3>
+                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                </div>
+                                <a href="#" class="content-wrapper-link"></a>    
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="service" data-height="height">
+                                <div class="service-element">
+                                    <i class="service-icon icon-badge"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Materials Supply</h3>
+                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                                </div>
+                                <a href="#" class="content-wrapper-link"></a>    
+                            </div>
+                        </div>
+                    </div>
+                    <!--// end row -->
+                </div>
+            </div>
+        </div>
+        <!-- End Service -->
+
+
+        <!-- Work -->
+        <div id="work">
+            <div class="section-seperator">
+                <div class="content-md container">
+                    <div class="row margin-b-40">
+                        <div class="col-sm-6">
+                            <h2>Portfolio</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
+                        </div>
+                    </div>
+                    <!--// end row -->
+
+                    <!-- Masonry Grid -->
+                    <div class="masonry-grid row">
+
+                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 md-margin-b-30">
+                            <!-- Work -->
+                            <div class="work work-popup-trigger">
+                                <div class="work-overlay">
+                                    <img class="full-width img-responsive" src="/static/website/img/397x300/01.jpg" alt="Portfolio Image">
+                                </div>
+                                <div class="work-popup-overlay">
+                                    <div class="work-popup-content">
+                                        <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                        <div class="margin-b-30">
+                                            <h3 class="margin-b-5">Art Of Coding</h3>
+                                            <span>Clean &amp; Minimalistic Design</span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8 work-popup-content-divider sm-margin-b-20">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <ul class="list-inline work-popup-tag">
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Strategy,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Implementation,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Credentials</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p class="margin-b-5"><strong>Project Manager:</strong> Boris Becker</p>
+                                                    <p class="margin-b-5"><strong>Executive:</strong> Heike Macatsch</p>
+                                                    <p class="margin-b-5"><strong>Architect:</strong> Oliver Pocher</p>
+                                                    <p class="margin-b-5"><strong>Client:</strong> FairTech</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Work -->
+                        </div>
+                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 md-margin-b-30">
+                            <!-- Work -->
+                            <div class="work work-popup-trigger">
+                                <div class="work-overlay">
+                                    <img class="full-width img-responsive" src="/static/website/img/397x300/02.jpg" alt="Portfolio Image">
+                                </div>
+                                <div class="work-popup-overlay">
+                                    <div class="work-popup-content">
+                                        <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                        <div class="margin-b-30">
+                                            <h3 class="margin-b-5">Art Of Coding</h3>
+                                            <span>Clean &amp; Minimalistic Design</span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8 work-popup-content-divider sm-margin-b-20">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <ul class="list-inline work-popup-tag">
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Strategy,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Implementation,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Credentials</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p class="margin-b-5"><strong>Project Manager:</strong> Boris Becker</p>
+                                                    <p class="margin-b-5"><strong>Executive:</strong> Heike Macatsch</p>
+                                                    <p class="margin-b-5"><strong>Architect:</strong> Oliver Pocher</p>
+                                                    <p class="margin-b-5"><strong>Client:</strong> Keenthemes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Work -->
+                        </div>
+                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                            <!-- Work -->
+                            <div class="work work-popup-trigger">
+                                <div class="work-overlay">
+                                    <img class="full-width img-responsive" src="/static/website/img/397x300/03.jpg" alt="Portfolio Image">
+                                </div>
+                                <div class="work-popup-overlay">
+                                    <div class="work-popup-content">
+                                        <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                        <div class="margin-b-30">
+                                            <h3 class="margin-b-5">Art Of Coding</h3>
+                                            <span>Clean &amp; Minimalistic Design</span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8 work-popup-content-divider sm-margin-b-20">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <ul class="list-inline work-popup-tag">
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Strategy,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Implementation,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Credentials</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p class="margin-b-5"><strong>Project Manager:</strong> Boris Becker</p>
+                                                    <p class="margin-b-5"><strong>Executive:</strong> Heike Macatsch</p>
+                                                    <p class="margin-b-5"><strong>Architect:</strong> Oliver Pocher</p>
+                                                    <p class="margin-b-5"><strong>Client:</strong> Keenthemes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Work -->
+                        </div>
+						<div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
+						<div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-b-30">
+                            <!-- Work -->
+                            <div class="work work-popup-trigger">
+                                <div class="work-overlay">
+                                    <img class="full-width img-responsive" src="/static/website/img/397x415/01.jpg" alt="Portfolio Image">
+                                </div>
+                                <div class="work-popup-overlay">
+                                    <div class="work-popup-content">
+                                        <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                        <div class="margin-b-30">
+                                            <h3 class="margin-b-5">Art Of Coding</h3>
+                                            <span>Clean &amp; Minimalistic Design</span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8 work-popup-content-divider sm-margin-b-20">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <ul class="list-inline work-popup-tag">
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Strategy,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Implementation,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Credentials</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p class="margin-b-5"><strong>Project Manager:</strong> Boris Becker</p>
+                                                    <p class="margin-b-5"><strong>Executive:</strong> Heike Macatsch</p>
+                                                    <p class="margin-b-5"><strong>Architect:</strong> Oliver Pocher</p>
+                                                    <p class="margin-b-5"><strong>Client:</strong> FairTech</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Work -->
+                        </div>
+                        <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-8 margin-b-30">
+                            <!-- Work -->
+                            <div class="work work-popup-trigger">
+                                <div class="work-overlay">
+                                    <img class="full-width img-responsive" src="/static/website/img/800x400/01.jpg" alt="Portfolio Image">
+                                </div>
+                                <div class="work-popup-overlay">
+                                    <div class="work-popup-content">
+                                        <a href="javascript:void(0);" class="work-popup-close">Hide</a>
+                                        <div class="margin-b-30">
+                                            <h3 class="margin-b-5">Art Of Coding</h3>
+                                            <span>Clean &amp; Minimalistic Design</span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-8 work-popup-content-divider sm-margin-b-20">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                                                    <ul class="list-inline work-popup-tag">
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Strategy,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Implementation,</a></li>
+                                                        <li class="work-popup-tag-item"><a class="work-popup-tag-link" href="#">Credentials</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="margin-t-10 sm-margin-t-0">
+                                                    <p class="margin-b-5"><strong>Project Manager:</strong> Boris Becker</p>
+                                                    <p class="margin-b-5"><strong>Executive:</strong> Heike Macatsch</p>
+                                                    <p class="margin-b-5"><strong>Architect:</strong> Oliver Pocher</p>
+                                                    <p class="margin-b-5"><strong>Client:</strong> FairTech</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Work -->
+                        </div>
+                    </div>
+                    <!-- End Masonry Grid -->
+                </div>
+            </div>
+            
+        </div>
+        <!-- End Work -->
+
+
+        <!-- Contact -->
+		<div id="contact">
+		    <!-- Contact List -->
+		    <div class="section-seperator">
+		        <div class="content-lg container">
+		            <div class="row">
+		                <!-- Contact List -->
+		                <div class="col-sm-4 sm-margin-b-50">
+		                    <h3><a href="http://ft-seo.ch/">Zurich</a> <span class="text-uppercase margin-l-20">Human Resources</span></h3>
+		                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+		                    <ul class="list-unstyled contact-list">
+		                        <li><i class="margin-r-10 color-base icon-call-out"></i> +41 60 66 555 44 33</li>
+		                        <li><i class="margin-r-10 color-base icon-envelope"></i> hr@flameonepage.com</li>
+		                    </ul>
+		                </div>
+		                <!-- End Contact List -->
+
+		                <!-- Contact List -->
+		                <div class="col-sm-4 sm-margin-b-50">
+		                    <h3><a href="http://ft-seo.ch/">Malta</a> <span class="text-uppercase margin-l-20">Development</span></h3>
+		                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+		                    <ul class="list-unstyled contact-list">
+		                        <li><i class="margin-r-10 color-base icon-call-out"></i> +356 7965 1257</li>
+		                        <li><i class="margin-r-10 color-base icon-envelope"></i> developmemt@flameonepage.com</li>
+		                    </ul>
+		                </div>
+		                <!-- End Contact List -->
+
+		                <!-- Contact List -->
+		                <div class="col-sm-4 sm-margin-b-50">
+		                    <h3><a href="http://ft-seo.ch/">Manchester</a> <span class="text-uppercase margin-l-20">CEO</span></h3>
+		                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
+		                    <ul class="list-unstyled contact-list">
+		                        <li><i class="margin-r-10 color-base icon-call-out"></i> +44 654 583 5518</li>
+		                        <li><i class="margin-r-10 color-base icon-envelope"></i> ceo@flameonepage.com</li>
+		                    </ul>
+		                </div>
+		                <!-- End Contact List -->
+		            </div>
+		            <!--// end row -->
+		            <br/><br/>
+		            <div class="row">
+		            	<h3>Fale Conosco</h3>
+
+                        {% if message %}
+                            <div class="alert alert-success fade in alert-dismissable" style="margin-top:18px;">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                <strong>Obrigado pelo contato.</strong>  Retornaremos o mais breve possível.
+                            </div>
+                        {% endif %}
+
+		            	<form id="form-contato" class="form-contato" autocomplete="off" method="post" enctype="multipart/form-data" role="form">
+		            	{% csrf_token %}
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form.nome }}
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form.telefone }}
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											{{ form.email }}
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea name="descricao" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="submit" value="Enviar Mensagem" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+		            </div>
+
+		        </div>
+		    </div>
+		    <!-- End Contact List -->
+
+		    <!-- Google Map -->
+		    <div class="map height-300">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.0694570748947!2d7.455080415208266!3d46.94067397914616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e39d0cf20e8d1%3A0x9daac4cd3043d067!2sThunstrasse+50%2C+3005+Bern%2C+Switzerland!5e0!3m2!1sen!2sin!4v1496749852928" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+
+
+		</div>
+		<!-- End Contact -->
+
+{% endblock %}
+
+{% block javascript %}{% endblock %}

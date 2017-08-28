@@ -1,0 +1,14 @@
+{% extends "site/base.html" %} 
+{% load staticfiles %}
+
+{% block content %}
+	<div id="fh5co-feature-product" class="fh5co-section-gray">
+		<div class="container">
+			{% autoescape off %}
+				{{publicacao.conteudo}}
+			{% endautoescape %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

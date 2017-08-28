@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".clockpicker").clockpicker({autoclose:!0,donetext:"Done","default":"now"})});

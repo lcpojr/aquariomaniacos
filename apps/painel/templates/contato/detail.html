@@ -1,0 +1,76 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/select2.min.css">
+{% endblock %}
+{% block content %}
+
+  <div class="box-typical box-typical-padding">
+    <div class="row">
+      <div class="col-lg-2 col-sm-4 text-center">
+        <h2 class="m-t-lg"><i class="text-muted font-icon font-icon-question"></i></h2>
+        <h5 class="m-b semibold">Mensagem</h5>
+        <p>
+          Você poderá ver todas as mensagens recebidas ao retornar para a tela de anterior.
+        </p>
+      </div>
+      <div class="col-lg-10 col-sm-8">
+        <h5 class="m-t-lg with-border">Mensagem</h5>
+        <div class="row">
+          <div class="col-lg-3">
+            <fieldset class="form-group">
+              <label class="form-label semibold" for="nome">Nome</label>
+              {{ form.nome }}
+            </fieldset>
+          </div>
+          <div class="col-lg-9">
+            <fieldset class="form-group">
+              <label class="form-label semibold" for="telefone">Telefone</label>
+              {{ form.telefone }}
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <fieldset class="form-group">
+              <label class="form-label semibold" for="email">E-mail</label>
+              {{ form.email }}
+            </fieldset>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <fieldset class="form-group">
+              <label class="form-label semibold" for="descricao">Descrição</label>
+              {{ form.descricao }}
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+                <a class="btn btn-danger" href="{% url 'painel:contato-deletar' contato %}">
+                  Deletar
+                </a>
+              <div class="pull-right">
+                <a class="btn btn-secondary-outline" href="{% url 'painel:contato-listar' %}">
+                  Voltar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+{% block javascript %}
+<script src="/static/painel/build/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/painel/build/js/lib/select2/select2.full.min.js"></script>
+<script src="/static/painel/build/js/lib/html5-form-validation/jquery.validation.min.js"></script>
+<script src="/static/painel/build/js/lib/jquery-validation/localization/messages_pt_BR.min.js"></script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/tasks.min.css">
+{% endblock %}
+{% block content %}
+{% if publicacoes %}
+<div class="tasks-grid">
+	{% for publicacao in publicacoes %}
+		<div class="tasks-grid-col">
+			<div class="sortable" data-sortable-id="2" aria-dropeffect="move">
+				<section class="box-typical task-card task" data-item-sortable-id="2" draggable="true" role="option" aria-grabbed="false">
+					<div class="task-card-photo">
+						<a href="{% url 'website:noticia' publicacao.pk %}">
+							<img height=150 src="/media/{{publicacao.imagem}}" alt="{{publicacao.titulo}}">
+						</a>
+					</div>
+					<div class="task-card-in">
+						<div class="btn-group task-card-menu">
+							<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="font-icon-dots-vert-square"></i>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="{% url 'painel:publicacao-editar' publicacao.pk %}">
+									<i class="font-icon font-icon-pencil"></i>
+									Editar
+								</a>
+								<a class="dropdown-item" href="{% url 'painel:publicacao-deletar' publicacao.pk %}">
+									<i class="font-icon font-icon-trash"></i>
+									Deletar
+								</a>
+							</div>
+						</div>
+						<div class="task-card-title">
+							<a href="{% url 'website:noticia' publicacao.pk %}">{{publicacao.titulo}}</a><br/>
+							<span class="task-card-title-label">(Publicada)</span>
+						</div>
+					</div>
+					<div class="task-card-footer">
+						<div class="task-card-meta-item">
+							<i class="fa fa-calendar"></i>
+							{{publicacao.data}}
+						</div>
+						<div class="avatar-preview avatar-preview-32">
+							<a href="#">
+								{{publicacao.usuario}}
+							</a>
+						</div>
+					</div>
+				</section><!--.task-card-->
+			</div>
+		</div><!--.tasks-grid-col-->
+	{% endfor %}
+</div>
+{% else %}
+<div class="box-typical box-typical-full-height" style="min-height: 444px;">
+	<div class="add-model-screen tbl" style="height: 444px;">
+		<div class="add-model-screen-in">
+			<div class="add-model-screen-user">
+				<i class="font-icon font-icon-user"></i>
+			</div>
+			<h2>Aqui serão listadas suas publicações</h2>
+			<p class="lead color-blue-grey-lighter">
+				Parece que você ainda não tem nenhuma
+				<br>
+				<b>Publicação</b> cadastrada.
+			</p>
+			<!--<a href="" class="btn"></a>-->
+		</div>
+	</div>
+</div><!--.box-typical-->
+{% endif %}
+{% endblock %}
+{% block javascript %}
+<script src="/static/painel/build/js/lib/bootstrap-table/bootstrap-table.js"></script>
+<script src="/static/painel/build/js/lib/bootstrap-table/bootstrap-table-init.js"></script>
+{% endblock %}

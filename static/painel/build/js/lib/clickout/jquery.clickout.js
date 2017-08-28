@@ -1,0 +1,1 @@
+!function(c){c.fn.clickoutside=function(c){var i=1,n=$(this);return n.cb=c,this.click(function(){i=0}),$(document).click(function(){i&&n.cb(),i=1}),$(this)}}(jQuery);

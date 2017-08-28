@@ -1,0 +1,73 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/select2.min.css">
+{% endblock %}
+{% block content %}
+<form id="form-telefone" class="form-telefone" name="form_telefone"  method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="box-typical box-typical-padding">
+		<div class="row">
+			<div class="col-lg-2 col-sm-4 text-center">
+				<h2 class="m-t-lg"><i class="text-muted font-icon font-icon-question"></i></h2>
+				<h5 class="m-b semibold">Editando um Telefone</h5>
+				<p>
+					Você poderá editar seus telefones ao preencher este formulário.
+				</p>
+			</div>
+			<div class="col-lg-10 col-sm-8">
+
+				<h5 class="m-t-lg with-border">Editar Telefone</h5>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.numero.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.numero.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.numero }}
+								</p>
+								<small class="text-muted">{{ form.numero.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="form-group">
+							<button class="btn btn-save" type="submit">Salvar Telefone</button>
+							<div class="pull-right">
+								<a class="btn btn-secondary-outline" href="{% url 'painel:telefone-listar' %}">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</form>
+{% endblock %}
+{% block javascript %}>
+<script src="/static/painel/build/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/painel/build/js/lib/select2/select2.full.min.js"></script>
+<script src="/static/painel/build/js/lib/html5-form-validation/jquery.validation.min.js"></script>
+<script>
+	$(function() {
+	    $('.form-telefone').validate({
+	        submit : {
+	            settings : {
+	                inputContainer : '.form-group',
+	                errorListClass : 'form-tooltip-error'
+	            },
+	        }
+	    });
+
+	});
+</script>
+{% endblock %}

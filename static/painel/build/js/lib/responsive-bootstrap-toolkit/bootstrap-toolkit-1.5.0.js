@@ -1,0 +1,1 @@
+var ResponsiveBootstrapToolkit=function(e){var n={clock:{express:150,fast:300,medium:450,slow:600},timeString:new Date,isBreakpoint:function(n){return e(".device-"+n).is(":visible")},waitForFinalEvent:function(){var e={};return function(n,t,i){var i=i?null:"I'm a banana!";e[i]&&clearTimeout(e[i]),e[i]=setTimeout(n,t)}}()};return n}(jQuery);

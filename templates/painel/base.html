@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Estação Cedro - Painel</title>
+	<link href="/static/painel/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
+	<link href="/static/painel/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
+	<link href="/static/painel/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
+	<link href="/static/painel/img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
+	<link href="/static/painel/img/favicon.png" rel="icon" type="image/png">
+	<link href="/static/painel/img/favicon.ico" rel="shortcut icon">
+
+	<link rel="stylesheet" href="/static/painel/build/css/lib/font-awesome/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/painel/build/css/lib/bootstrap/bootstrap.min.css">
+	{% block css %}
+	{% endblock %}
+	<link rel="stylesheet" href="/static/painel/build/css/main.css">
+</head>
+<body class="without-side-menu">
+	{% include 'painel/includes/header.html' %}
+	<div class="page-content">
+		<div class="container-fluid">
+			{% block content %}
+
+			{% endblock %}
+		</div><!--.container-fluid-->
+	</div><!--.page-content-->
+
+	<script src="/static/painel/build/js/lib/jquery/jquery.min.js"></script>
+	<script src="/static/painel/build/js/lib/tether/tether.min.js"></script>
+	<script src="/static/painel/build/js/lib/bootstrap/bootstrap.min.js"></script>
+	<script src="/static/painel/build/js/plugins.js"></script>
+	<script src="/static/site/js/jquery.mask.min.js"></script>
+
+	<!-- Jquery MASK -->
+	<script>
+		$(document).ready(function(){
+			var maskBehavior = function (val) {
+			 		return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+				},options = {onKeyPress: function(val, e, field, options) {
+				 	field.mask(maskBehavior.apply({}, arguments), options);
+				}
+			};
+		  	$('.data').mask('99/99/9999');
+		  	$('.cep').mask('00000-000');
+		  	$('.telefone').mask('(00) 0000-0000');
+		  	$('.celular').mask(maskBehavior, options);
+		  	$('.cpf').mask('000.000.000-00', {reverse: true});
+		  	$('.dinheiro').mask('000.000.000.000.000,00', {reverse: true});
+		});
+	</script>
+	
+	{% block javascript%}
+	{% endblock %}
+	<script src="/static/painel/build/js/app.js"></script>
+</body>
+</html>

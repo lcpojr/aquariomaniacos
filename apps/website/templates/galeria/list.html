@@ -1,0 +1,56 @@
+{% extends "site/base.html" %} 
+{% load staticfiles %}
+
+{% block css %}
+	<!-- Custom css -->
+	<link rel="stylesheet" href="/static/site/css/custom.css">
+{% endblock %}
+
+{% block content %}
+	{% if galeria %}
+		<div id="fh5co-portfolio">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
+						<h3>Galeria de Fotos</h3>
+						<p>Acompanhe nosso trabalho, visite nossa galeria</p>
+					</div>
+				</div>
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-12">
+						<ul id="fh5co-portfolio-list">
+							{% for imagem in galeria %}	
+								{% ifchanged imagem.album %}
+									<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(/media/{{imagem.imagem}}); ">
+										<a href="{% url 'website:galeria' imagem.album.pk %}" class="color-3">
+											<div class="case-studies-summary">
+												<span>{{imagem.album.categoria}}</span>
+												<h2>{{imagem.album.titulo}}</h2>
+											</div>
+										</a>
+									</li>
+								{% endifchanged %}
+							{% endfor %}
+						</ul>		
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<div id="fh5co-feature-product" class="fh5co-section-gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center heading-section">
+						<h3>
+							Infelismente parece que não temos nenhuma foto recente em nossa galeria.
+							Volte mais tarde e fique por dentro de nossas ultimas atividades.
+						</h3>
+						<p><b>Associação de transformação social (Estação cedro) – ONG</b></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block javascript %}{% endblock %}

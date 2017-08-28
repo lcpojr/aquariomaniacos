@@ -1,0 +1,1 @@
+$(document).ready(function(){for(var t=$("#table"),o=[],a=1;a<=40;a++)o.push({id:a,name:"Status "+a,price:"$"+Math.ceil(100*Math.random())});t.bootstrapTable({iconsPrefix:"font-icon",paginationPreText:'<i class="font-icon font-icon-arrow-left"></i>',paginationNextText:'<i class="font-icon font-icon-arrow-right"></i>',data:o})});

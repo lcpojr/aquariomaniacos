@@ -1,0 +1,67 @@
+{% extends "site/base.html" %} 
+{% load staticfiles %}
+
+{% block css %}
+	<!-- Custom css -->
+	<link rel="stylesheet" href="/static/site/css/custom.css">
+{% endblock %}
+
+{% block content %}
+	{% if publicacoes %}
+	<div id="fh5co-blog-section" class="fh5co-section-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+					<h3>Conheça nosso trabalho e faça parte</h3>
+					<p>Fique por dentro de nossas ultimas atividades.</p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row row-bottom-padded-md">
+				{% for publicacao in publicacoes %}
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="fh5co-blog animate-box">
+							<a href="{% url 'website:noticia' publicacao.pk %}">
+								<img class="img-responsive img-custom" src="/media/{{publicacao.imagem}}" alt="{{publicacao.titulo}}">
+							</a>
+							<div class="blog-text">
+								<div class="prod-title">
+									<h3>
+										<a href="{% url 'website:noticia' publicacao.pk %}">
+											{{publicacao.titulo}}
+										</a>
+									</h3>
+									<span class="posted_by">{{publicacao.data}}</span>
+									<p class="publicacao-resumo" title="{{publicacao.resumo}}">
+										{{publicacao.resumo|truncatechars:100}}
+									</p>
+									<p><a href="{% url 'website:noticia' publicacao.pk %}">Leia mais...</a></p>
+								</div>
+							</div> 
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% else %}
+	<div id="fh5co-feature-product" class="fh5co-section-gray">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12 text-center heading-section">
+					<h3>
+						Infelismente parece que não temos nenhuma notícia recente.
+						Volte mais tarde e fique por dentro de nossas ultimas atividades.
+					</h3>
+					<p><b>Associação de transformação social (Estação cedro) – ONG</b></p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	{% endif %}
+{% endblock %}
+
+{% block javascript %}{% endblock %}

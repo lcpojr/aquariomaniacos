@@ -6,7 +6,7 @@ MEDIA_ROOT = '/var/www/django/media'
 DEBUG = False
 
 ADMINS = (
-    ('3Y', 'contato@3ysoftwarehouse.com.br'),
+    ('3Y', 'i3lcontato@gmail.com.br'),
 )
 
 MANAGERS = ADMINS

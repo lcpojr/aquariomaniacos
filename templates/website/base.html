@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+   
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="FlameOnePage freebie theme for web startups by FairTech SEO." name="description"/>
+        <meta content="FairTech" name="author"/>
+
+        <title>Aquariomaníacos</title>
+
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link href="/static/website/vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/website/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/website/css/animate.css" rel="stylesheet">
+        <link href="/static/website/vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/static/website/css/layout.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="/static/website/img/custom/favicon.ico"/>
+        <link rel="icon" type="image/png" href="/static/website/img/custom/favicon.png">
+
+        {% block css %}{% endblock %}
+    </head>
+   
+  
+    <body id="body" data-spy="scroll" data-target=".header">
+
+        {% include 'website/includes/header.html' %}
+
+        {% block content %}{% endblock %}
+
+        <!--========== END PAGE LAYOUT ==========-->
+
+        {% include 'website/includes/footer.html' %}
+            
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Topo</a>
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="/static/website/vendor/jquery.min.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="/static/website/vendor/jquery.easing.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/jquery.wow.min.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+        <script src="/static/website/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="/static/website/js/layout.min.js" type="text/javascript"></script>
+        <script src="/static/website/js/components/wow.min.js" type="text/javascript"></script>
+        <script src="/static/website/js/components/swiper.min.js" type="text/javascript"></script>
+        <script src="/static/website/js/components/masonry.min.js" type="text/javascript"></script>
+
+        {% block javascript %}{% endblock %}
+
+    </body>
+    <!-- END BODY -->
+</html>

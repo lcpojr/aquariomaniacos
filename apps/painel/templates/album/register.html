@@ -1,0 +1,153 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/editor.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/select2.min.css">
+{% endblock %}
+{% block content %}
+<form id="form-album" class="form-album" name="form-album"  method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="box-typical box-typical-padding">
+		<div class="row">
+			<div class="col-lg-2 col-sm-4 text-center">
+				<h2 class="m-t-lg"><i class="text-muted font-icon font-icon-question"></i></h2>
+				<h5 class="m-b semibold">Criando um album</h5>
+				<p>
+					Você poderá criar novos albuns ao preencher este formulário.
+				</p>
+			</div>
+			<div class="col-lg-10 col-sm-8">
+
+				<h5 class="m-t-lg with-border">Novo Album</h5>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.titulo.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.titulo.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.titulo }}
+								</p>
+								<small class="text-muted">{{ form.titulo.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.categoria.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.categoria.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.categoria }}
+								</p>
+								<small class="text-muted">{{ form.categoria.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.data_album.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.data_album.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.data_album }}
+								</p>
+								<small class="text-muted">{{ form.data_album.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row images">
+					<div class="col-lg-10">
+						<fieldset class="form-group">
+							<label class="col-sm2 form-label semibold" for="id_imagem">
+								<label for="id_imagem">Imagem:</label>
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									<input type="file" required="" placeholder="Imagem de capa da publicação" data-validation="[NOTEMPTY]" name="imagem" id="id_imagem" class="form-control">
+								</p>
+								<small class="text-muted"></small>
+							</div>
+						</fieldset>
+					</div>
+					<div class="col-lg-2">
+						<fieldset class="form-group" style="padding:5px;">
+							<label class="col-sm2 form-label semibold" for="">
+								<label for="">&nbsp</label>
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									<button class="btn btn-save add-image" type="button">Adicionar Foto</button>
+								</p>
+								<small class="text-muted"></small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="form-group">
+							<button class="btn btn-save" type="submit">Salvar Album</button>
+							<div class="pull-right">
+								<a class="btn btn-secondary-outline" href="{% url 'painel:album-listar' %}">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</form>
+{% endblock %}
+{% block javascript %}
+<script src="/static/painel/build/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/painel/build/js/lib/select2/select2.full.min.js"></script>
+<script src="/static/painel/build/js/lib/html5-form-validation/jquery.validation.min.js"></script>
+<script>
+	$(function() {
+	    $('.form-album').validate({
+	        submit : {
+	            settings : {
+	                inputContainer : '.form-group',
+	                errorListClass : 'form-tooltip-error'
+	            },
+	        }
+	    });
+
+	});
+	$(document).ready(function() {
+	    var max_fields      = 10; //maximum input boxes allowed
+	    var wrapper         = $(".images"); //Fields wrapper
+	    var add_button      = $(".add-image"); //Add button ID
+	   
+	    var x = 1; //initlal text box count
+	    $(add_button).click(function(e){ //on add input button click
+	        e.preventDefault();
+	        if(x < max_fields){ //max input box allowed
+	            x++; //text box increment
+	            $(wrapper).append('<div class="col-lg-12"><fieldset class="form-group"><div class="col-sm10"><p class="form-control-static"><input type="file" required="" placeholder="Imagem de capa da publicação" data-validation="[NOTEMPTY]" name="imagem" id="id_imagem" class="form-control"></p><small class="text-muted"></small><button class="btn btn-danger pull-right remove-image" type="button">Remover Foto</button></div></fieldset></div>'); //add input box
+	        }
+	    });
+	   
+	    $(wrapper).on("click",".remove-image", function(e){ //user click on remove text
+	        e.preventDefault(); $(this).parent('div').remove(); x--;
+	    })
+	});
+</script>
+{% endblock %}

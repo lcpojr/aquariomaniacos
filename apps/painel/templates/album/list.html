@@ -1,0 +1,95 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/tasks.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/gallery.min.css">
+{% endblock %}
+{% block content %}
+{% if imagens %}
+<div class="tasks-grid">
+	<section class="box-typical box-typical-full-height-with-header">
+		<header class="box-typical-header box-typical-header-bordered">
+			<div class="tbl-row">
+				<div class="tbl-cell tbl-cell-title">
+					<h3>Album</h3>
+				</div>
+				<div class="tbl-cell tbl-cell-actions">
+					<button class="action-btn view active" type="button">
+						<i class="font-icon font-icon-view-grid"></i>
+					</button>
+					<button class="action-btn view" type="button">
+						<i class="font-icon font-icon-view-rows"></i>
+					</button>
+					<button class="action-btn view" type="button">
+						<i class="font-icon font-icon-view-cascade"></i>
+					</button>
+				</div>
+			</div>
+		</header>
+		<div class="box-typical-body">
+			<div class="gallery-grid">
+				{% for imagem in imagens %}
+				{% ifchanged imagem.album.titulo %} 
+					<div class="row">
+						<div class="col-lg-12">
+							<h5 class="m-t-lg with-border">
+							 Album {{ imagem.album.titulo }}
+			                 <a class="like pull-right" href="{% url 'painel:album-deletar' imagem.album.pk %}">
+			                    <i class="font-icon font-icon-trash"></i>
+			                 </a>
+			                 <a class="like pull-right" style="margin-right:10px;" href="{% url 'painel:album-editar' imagem.album.pk %}">
+			                    <i class="font-icon font-icon-pencil"></i>
+			                 </a>
+							</h5>
+						</div>
+					</div>
+				{% endifchanged %}
+				<div class="gallery-col">
+					<article class="gallery-item" style="height: 158px;">
+						<img height="158" alt="" src="/media/{{ imagem.imagem }}" class="gallery-picture">
+						<div class="gallery-hover-layout">
+							<div class="gallery-hover-layout-in">
+								<p class="gallery-item-title">{{ imagem.album.titulo }}</p>
+								<p>{{ imagem.album.categoria }}</p>
+								<div class="btn-group">
+									<a href="{% url 'painel:foto-deletar' imagem.pk %}" >
+										<button class="btn" type="button">
+											<i class="font-icon font-icon-trash"></i>
+										</button>
+									</a>
+								</div>
+								<p>{{ imagem.album.data|timesince:hoje}} atrás.</p>
+							</div>
+						</div>
+					</article>
+				</div><!--.gallery-col-->
+				{% endfor %}
+
+			</div><!--.gallery-grid-->
+		</div><!--.box-typical-body-->
+	</section>
+</div>
+{% else %}
+<div class="box-typical box-typical-full-height" style="min-height: 444px;">
+	<div class="add-model-screen tbl" style="height: 444px;">
+		<div class="add-model-screen-in">
+			<div class="add-model-screen-user">
+				<i class="font-icon font-icon-user"></i>
+			</div>
+			<h2>Aqui serão listados seus Albuns</h2>
+			<p class="lead color-blue-grey-lighter">
+				Parece que você ainda não tem nenhuma
+				<br>
+				<b>Album</b> cadastrado.
+			</p>
+			<!--<a href="" class="btn"></a>-->
+		</div>
+	</div>
+</div><!--.box-typical-->
+{% endif %}
+{% endblock %}
+{% block javascript %}
+<script src="/static/painel/build/js/lib/bootstrap-table/bootstrap-table.js"></script>
+<script src="/static/painel/build/js/lib/bootstrap-table/bootstrap-table-init.js"></script>
+{% endblock %}

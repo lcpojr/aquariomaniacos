@@ -1,0 +1,105 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/select2.min.css">
+{% endblock %}
+{% block content %}
+<form id="form-cliente" class="form-cliente" name="form_cliente"  method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="box-typical box-typical-padding">
+		<div class="row">
+			<div class="col-lg-2 col-sm-4 text-center">
+				<h2 class="m-t-lg"><i class="text-muted font-icon font-icon-question"></i></h2>
+				<h5 class="m-b semibold">Editando um Cliente</h5>
+				<p>
+					Você poderá editar seus clientes ao preencher este formulário.
+				</p>
+			</div>
+			<div class="col-lg-10 col-sm-8">
+
+				<h5 class="m-t-lg with-border">Editar Cliente</h5>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.nome.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.nome.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.nome }}
+								</p>
+								<small class="text-muted">{{ form.nome.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.imagem.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.imagem.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.imagem }}
+								</p>
+								<small class="text-muted">{{ form.imagem.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2">
+						<fieldset class="form-group">
+							<label for="{{form.status.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.status.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-status-static">
+									{{ form.status }}
+								</p>
+								<small class="text-muted">{{ form.status.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="form-group">
+							<button class="btn btn-save" type="submit">Salvar Cliente</button>
+							<div class="pull-right">
+								<a class="btn btn-secondary-outline" href="{% url 'painel:cliente-listar' %}">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</form>
+{% endblock %}
+{% block javascript %}>
+<script src="/static/painel/build/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/painel/build/js/lib/select2/select2.full.min.js"></script>
+<script src="/static/painel/build/js/lib/html5-form-validation/jquery.validation.min.js"></script>
+<script>
+	$(function() {
+	    $('.form-cliente').validate({
+	        submit : {
+	            settings : {
+	                inputContainer : '.form-group',
+	                errorListClass : 'form-tooltip-error'
+	            },
+	        }
+	    });
+
+	});
+</script>
+{% endblock %}

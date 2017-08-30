@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^galeria/lista/$', cache_page(60 * 15)(views.ListaGaleria.as_view()), name='galeria-lista'),
     url(r'^noticia/(?P<pk>\d+)/$', views.Noticia.as_view(), name='noticia'),
     url(r'^noticia/lista/$', views.ListaNoticias.as_view(), name='noticia-lista'),
-    url(r'^contato/$', views.Contato.as_view(), name='contato'),
+    url(r'^projeto/(?P<pk>\d+)/$', views.ProjetoRecente.as_view(), name='projetorecente'),
+    url(r'^projeto/lista/$', views.ListaProjetosRecente.as_view(), name='projetorecente-lista'),
 ]

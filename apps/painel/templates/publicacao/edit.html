@@ -71,6 +71,35 @@
 					</div>
 				</div>
 
+				<div class="row">
+					<div class="col-lg-2">
+						<fieldset class="form-group">
+							<label for="{{form.slideshow.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.slideshow.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.slideshow }}
+								</p>
+								<small class="text-muted">{{ form.slideshow.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+					<div class="col-lg-2">
+						<fieldset class="form-group">
+							<label for="{{form.status.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.status.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.status }}
+								</p>
+								<small class="text-muted">{{ form.status.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
 				<h5 class="m-t-lg with-border">Conteúdo da página</h5>
 
 				<div class="row">

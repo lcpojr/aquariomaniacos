@@ -185,58 +185,7 @@ class ContatoDelete(View):
     def get(self, request, pk):
         contato = Contato.objects.get(pk=pk).delete()
         return redirect(reverse_lazy("painel:contato-listar"))
-
-
-
-class DoacaoList(View):
-    def get(self, request):
-        obj_list = Doacao.objects.all().order_by('-data')
-
-        paginator = Paginator(obj_list, 25)
-        page = request.GET.get('page')
-        try:
-            doacoes = paginator.page(page)
-        except PageNotAnInteger:
-            doacoes = paginator.page(1)
-        except EmptyPage:
-            doacoes = paginator.page(paginator.num_pages)
-        context = {'doacoes': doacoes}
-        return render(request, 'doacao/list.html', context)
-
-class DoacaoDetail(View):
-    def get(self, request, pk):
-        doacao = Doacao.objects.get(pk=pk)
-        doacao.is_visualizada = True
-        doacao.save()
-        form = DoacaoForm(instance=doacao)
-        form.fields['nome'].widget.attrs['disabled'] = True
-        form.fields['rg'].widget.attrs['disabled'] = True
-        form.fields['cpf'].widget.attrs['disabled'] = True
-        form.fields['email'].widget.attrs['disabled'] = True
-        form.fields['nome'].widget.attrs['disabled'] = True
-        form.fields['telefone'].widget.attrs['disabled'] = True
-        form.fields['celular'].widget.attrs['disabled'] = True
-        form.fields['cep'].widget.attrs['disabled'] = True
-        form.fields['rua'].widget.attrs['disabled'] = True
-        form.fields['bairro'].widget.attrs['disabled'] = True
-        form.fields['cidade'].widget.attrs['disabled'] = True
-        form.fields['estado'].widget.attrs['disabled'] = True
-        form.fields['valor'].widget.attrs['disabled'] = True
-        form.fields['modalidade'].widget.attrs['disabled'] = True
-        form.fields['banco'].widget.attrs['disabled'] = True
-        form.fields['conta'].widget.attrs['disabled'] = True
-        form.fields['agencia'].widget.attrs['disabled'] = True
-        form.fields['titular'].widget.attrs['disabled'] = True
-        form.fields['cpf_cnpj'].widget.attrs['disabled'] = True
-
-        context = {'form':form, 'doacao':pk}
-        return render (request, 'doacao/detail.html', context)
-
-class DoacaoDelete(View):
-    def get(self, request, pk):
-        doacao = Doacao.objects.get(pk=pk).delete()
-        return redirect(reverse_lazy("painel:doacao-listar"))
-    
+            
 
 
 class ProjetoRegister(View):
@@ -382,6 +331,7 @@ class TelefoneRegister(View):
         else:
             return render (request, 'telefone/register.html', context)
 
+
 class TelefoneEdit(View):
     def get(self, request, pk):
         telefone = Telefone.objects.get(pk=pk)
@@ -401,6 +351,7 @@ class TelefoneEdit(View):
         else:
             return render (request, 'telefone/edit.html', context)
 
+
 class TelefoneList(View):
     def get(self, request):
         obj_list = Telefone.objects.all().order_by('-data')
@@ -416,7 +367,68 @@ class TelefoneList(View):
         context = {'telefones': telefones}
         return render(request, 'telefone/list.html', context)
 
+
 class TelefoneDelete(View):
     def get(self, request, pk):
         telefones = Telefone.objects.get(pk=pk).delete()
         return redirect(reverse_lazy("painel:telefone-listar"))
+
+
+class ClienteRegister(View):
+    def get(self, request):
+        form = ClienteForm()
+        context = {'form':form}
+        return render (request, 'cliente/register.html', context)
+
+    def post(self, request):
+        form = ClienteForm(request.POST, request.FILES)
+        context = {'form':form}
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
+            obj.save()
+            return redirect(reverse_lazy("painel:cliente-listar"))
+        else:
+            return render (request, 'cliente/register.html', context)
+
+
+class ClienteEdit(View):
+    def get(self, request, pk):
+        cliente = Cliente.objects.get(pk=pk)
+        form = ClienteForm(instance=cliente)
+        context = {'form':form, 'cliente':cliente}
+        return render (request, 'cliente/edit.html', context)
+
+    def post(self, request, pk):
+        cliente = Cliente.objects.get(pk=pk)
+        form = ClienteForm(request.POST, request.FILES, instance=cliente)
+        context = {'form':form}
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
+            obj.save()
+            return redirect(reverse_lazy("painel:cliente-listar"))
+        else:
+            return render (request, 'cliente/edit.html', context)
+
+
+class ClienteList(View):
+    def get(self, request):
+        obj_list = Cliente.objects.all().order_by('-data')
+
+        paginator = Paginator(obj_list, 25)
+        page = request.GET.get('page')
+        try:
+            clientes = paginator.page(page)
+        except PageNotAnInteger:
+            clientes = paginator.page(1)
+        except EmptyPage:
+            clientes = paginator.page(paginator.num_pages)
+        context = {'clientes': clientes}
+        return render(request, 'cliente/list.html', context)
+
+
+class ClienteDelete(View):
+    def get(self, request, pk):
+        clientes = Cliente.objects.get(pk=pk).delete()
+        return redirect(reverse_lazy("painel:cliente-listar"))

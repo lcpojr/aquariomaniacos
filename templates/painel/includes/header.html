@@ -40,14 +40,28 @@
                                 <span class="lb">Gerência</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dd-header-marketing">
-                                <a class="dropdown-item" href="{% url 'painel:album-listar' %}">Albuns</a>
-                                <a class="dropdown-item" href="{% url 'painel:doacao-listar' %}">Doações</a>
-                                <a class="dropdown-item" href="{% url 'painel:contato-listar' %}">Mensagens</a>
-                                <a class="dropdown-item" href="{% url 'painel:projeto-listar' %}">Projetos</a>
-                                <a class="dropdown-item" href="{% url 'painel:publicacao-listar' %}">Publicações</a>
-                                <a class="dropdown-item" href="{% url 'painel:telefone-listar' %}">Telefones</a>
+                                <a class="dropdown-item" href="{% url 'painel:album-listar' %}">
+                                    Albuns
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:cliente-listar' %}">
+                                    Clientes
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:contato-listar' %}">
+                                    Mensagens
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:projeto-listar' %}">
+                                    Projetos
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:publicacao-listar' %}">
+                                    Publicações
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:telefone-listar' %}">
+                                    Telefones
+                                </a>
                                 {% if request.user.is_staff %}
-                                    <a class="dropdown-item" href="{% url 'painel:usuario-listar' %}">Usuários</a>
+                                    <a class="dropdown-item" href="{% url 'painel:usuario-listar' %}">
+                                        Usuários
+                                    </a>
                                 {% endif %}
                             </div>
                         </div>
@@ -56,12 +70,25 @@
                                 Cadastrar
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dd-header-add">
-                                <a class="dropdown-item" href="{% url 'painel:album-cadastrar' %}">Album</a>
-                                <a class="dropdown-item" href="{% url 'painel:projeto-cadastrar' %}">Projetos</a>
-                                <a class="dropdown-item" href="{% url 'painel:publicacao-cadastrar' %}">Publicações</a>
-                                <a class="dropdown-item" href="{% url 'painel:telefone-cadastrar' %}">Telefones</a>
+                                <a class="dropdown-item" href="{% url 'painel:album-cadastrar' %}">
+                                    Album
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:cliente-cadastrar' %}">
+                                    Clientes
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:projeto-cadastrar' %}">
+                                    Projetos
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:publicacao-cadastrar' %}">
+                                    Publicações
+                                </a>
+                                <a class="dropdown-item" href="{% url 'painel:telefone-cadastrar' %}">
+                                    Telefones
+                                </a>
                                 {% if request.user.is_staff %}
-                                    <a class="dropdown-item" href="{% url 'painel:usuario-cadastrar' %}">Usuários</a>
+                                    <a class="dropdown-item" href="{% url 'painel:usuario-cadastrar' %}">
+                                        Usuários
+                                    </a>
                                 {% endif %}                           	
                             </div>
                         </div>

@@ -157,3 +157,6 @@ MEDIA_ROOT = str(base_dir_join('media'))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
+
+# Login
+LOGIN_URL = 'painel:login'

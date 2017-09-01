@@ -558,6 +558,7 @@ fieldset[disabled] .btn-theme {
 /* Navbar */
 .header .navbar {
   margin-bottom: 0;
+  background: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition-duration: 300ms;
   transition-property: all;
@@ -713,7 +714,7 @@ fieldset[disabled] .btn-theme {
   font-size: 13px;
   font-weight: 600;
   font-family: Hind, sans-serif;
-  color: #fff;
+  color: #515769;
   text-transform: uppercase;
   line-height: 55px;
   padding: 20px;

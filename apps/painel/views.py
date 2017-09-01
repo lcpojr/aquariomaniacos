@@ -168,6 +168,7 @@ class ContatoList(View):
         context = {'contatos': contatos}
         return render(request, 'contato/list.html', context)
 
+
 class ContatoDetail(View):
     def get(self, request, pk):
         contato = Contato.objects.get(pk=pk)

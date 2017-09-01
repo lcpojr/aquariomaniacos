@@ -46,6 +46,9 @@
                                 <a class="dropdown-item" href="{% url 'painel:cliente-listar' %}">
                                     Clientes
                                 </a>
+                                <a class="dropdown-item" href="{% url 'painel:informacao-listar' %}">
+                                    Informações
+                                </a>                                
                                 <a class="dropdown-item" href="{% url 'painel:contato-listar' %}">
                                     Mensagens
                                 </a>
@@ -54,9 +57,6 @@
                                 </a>
                                 <a class="dropdown-item" href="{% url 'painel:publicacao-listar' %}">
                                     Publicações
-                                </a>
-                                <a class="dropdown-item" href="{% url 'painel:telefone-listar' %}">
-                                    Telefones
                                 </a>
                                 {% if request.user.is_staff %}
                                     <a class="dropdown-item" href="{% url 'painel:usuario-listar' %}">
@@ -76,14 +76,14 @@
                                 <a class="dropdown-item" href="{% url 'painel:cliente-cadastrar' %}">
                                     Clientes
                                 </a>
+                                <a class="dropdown-item" href="{% url 'painel:informacao-cadastrar' %}">
+                                    Informações
+                                </a>
                                 <a class="dropdown-item" href="{% url 'painel:projeto-cadastrar' %}">
                                     Projetos
                                 </a>
                                 <a class="dropdown-item" href="{% url 'painel:publicacao-cadastrar' %}">
                                     Publicações
-                                </a>
-                                <a class="dropdown-item" href="{% url 'painel:telefone-cadastrar' %}">
-                                    Telefones
                                 </a>
                                 {% if request.user.is_staff %}
                                     <a class="dropdown-item" href="{% url 'painel:usuario-cadastrar' %}">

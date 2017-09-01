@@ -39,11 +39,11 @@ urlpatterns = [
     url(r'^album/delete/(?P<pk>\d+)/$', login_required(views.AlbumDelete.as_view()), name='album-deletar'),
     url(r'^foto/delete/(?P<pk>\d+)/$', login_required(views.FotoDelete.as_view()), name='foto-deletar'),
 
-    # URLS TELEFONE
-    url(r'^telefone/$', login_required(views.TelefoneList.as_view()), name='telefone-listar'),
-    url(r'^telefone/cadastrar/$', login_required(views.TelefoneRegister.as_view()), name='telefone-cadastrar'),
-    url(r'^telefone/editar/(?P<pk>\d+)/$', login_required(views.TelefoneEdit.as_view()), name='telefone-editar'),
-    url(r'^telefone/delete/(?P<pk>\d+)/$', login_required(views.TelefoneDelete.as_view()), name='telefone-deletar'),
+    # URLS CLIENTE
+    url(r'^informacao/$', login_required(views.InformacaoList.as_view()), name='informacao-listar'),
+    url(r'^informacao/cadastrar/$', login_required(views.InformacaoRegister.as_view()), name='informacao-cadastrar'),
+    url(r'^informacao/editar/(?P<pk>\d+)/$', login_required(views.InformacaoEdit.as_view()), name='informacao-editar'),
+    url(r'^informacao/delete/(?P<pk>\d+)/$', login_required(views.InformacaoDelete.as_view()), name='informacao-deletar'),
 
     # URLS CLIENTE
     url(r'^cliente/$', login_required(views.ClienteList.as_view()), name='cliente-listar'),

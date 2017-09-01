@@ -19,8 +19,18 @@ class Home(View):
     	projetos = Projeto.objects.filter(status=True).order_by('-data')[:3]
     	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
     	informacoes = Informacao.objects.filter(status=True)
+    	imagens = Imagem.objects.all().order_by('-album__data')
 
-    	context = {'form':form, 'message':False, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes, 'informacoes':informacoes}
+    	context = {
+    		'form':form, 
+    		'message':False, 
+    		'publicacoes':publicacoes, 
+    		'projetos':projetos, 
+    		'clientes':clientes, 
+    		'informacoes':informacoes, 
+    		'imagens':imagens
+    	}
+
     	return render (request, 'home.html', context)
 
     def post(self, request, *args, **kwargs):
@@ -35,7 +45,15 @@ class Home(View):
     	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
     	informacoes = Informacao.objects.filter(status=True)
 
-    	context = {'form':form, 'message':True, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes, 'informacoes':informacoes}
+    	context = {
+    		'form':form, 
+    		'message':True, 
+    		'publicacoes':publicacoes, 
+    		'projetos':projetos, 
+    		'clientes':clientes, 
+    		'informacoes':informacoes,
+    		'imagens':imagens
+    	}
     	return render (request, 'home.html', context)
 
 

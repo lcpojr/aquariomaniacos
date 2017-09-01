@@ -26,11 +26,6 @@ urlpatterns = [
     url(r'^mensagem/visualizar/(?P<pk>\d+)/$', login_required(views.ContatoDetail.as_view()), name='contato-detalhes'),
     url(r'^mensagem/deletar/(?P<pk>\d+)/$', login_required(views.ContatoDelete.as_view()), name='contato-deletar'),
 
-    # URLS DOACAO
-    url(r'^doacoes/$', views.DoacaoList.as_view(), name='doacao-listar'),
-    url(r'^doacoes/visualizar/(?P<pk>\d+)/$', login_required(views.DoacaoDetail.as_view()), name='doacao-detalhes'),
-    url(r'^doacoes/deletar/(?P<pk>\d+)/$', login_required(views.DoacaoDelete.as_view()), name='doacao-deletar'),
-
     # URLS PROJETO
     url(r'^projeto/$', login_required(views.ProjetoList.as_view()), name='projeto-listar'),
     url(r'^projeto/cadastrar/$', login_required(views.ProjetoRegister.as_view()), name='projeto-cadastrar'),
@@ -44,9 +39,16 @@ urlpatterns = [
     url(r'^album/delete/(?P<pk>\d+)/$', login_required(views.AlbumDelete.as_view()), name='album-deletar'),
     url(r'^foto/delete/(?P<pk>\d+)/$', login_required(views.FotoDelete.as_view()), name='foto-deletar'),
 
-    # URLS ALBUM
-    url(r'^telefone/$', login_required(views.TelefoneList.as_view()), name='telefone-listar'),
-    url(r'^telefone/cadastrar/$', login_required(views.TelefoneRegister.as_view()), name='telefone-cadastrar'),
-    url(r'^telefone/editar/(?P<pk>\d+)/$', login_required(views.TelefoneEdit.as_view()), name='telefone-editar'),
-    url(r'^telefone/delete/(?P<pk>\d+)/$', login_required(views.TelefoneDelete.as_view()), name='telefone-deletar'),
+    # URLS CLIENTE
+    url(r'^informacao/$', login_required(views.InformacaoList.as_view()), name='informacao-listar'),
+    url(r'^informacao/cadastrar/$', login_required(views.InformacaoRegister.as_view()), name='informacao-cadastrar'),
+    url(r'^informacao/editar/(?P<pk>\d+)/$', login_required(views.InformacaoEdit.as_view()), name='informacao-editar'),
+    url(r'^informacao/delete/(?P<pk>\d+)/$', login_required(views.InformacaoDelete.as_view()), name='informacao-deletar'),
+
+    # URLS CLIENTE
+    url(r'^cliente/$', login_required(views.ClienteList.as_view()), name='cliente-listar'),
+    url(r'^cliente/cadastrar/$', login_required(views.ClienteRegister.as_view()), name='cliente-cadastrar'),
+    url(r'^cliente/editar/(?P<pk>\d+)/$', login_required(views.ClienteEdit.as_view()), name='cliente-editar'),
+    url(r'^cliente/delete/(?P<pk>\d+)/$', login_required(views.ClienteDelete.as_view()), name='cliente-deletar'),
+
 ]

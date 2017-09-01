@@ -1,58 +1,95 @@
 {% extends "website/base.html" %} 
 {% load staticfiles %}
 
-{% block css %}
-	<link href="/static/website/css/custom.css" rel="stylesheet" type="text/css"/>
-{% endblock %}
-
 {% block content %}
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
             <div class="container">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    {% if not publicacoes %}
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    {% else %}
+                        {% for publicacao in publicacoes %}
+                            {% if forloop.counter0 == 0 %}
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            {% else %}
+                                <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </ol>
             </div>
 
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img class="img-responsive" src="/static/website/img/custom/slide1.jpg" alt="Slider Image">
-                    <div class="container">
-                        <div class="carousel-centered">
-                            <div class="margin-b-40">
-                                <h1 class="carousel-title">Slide 1</h1>
-                                <p class="color-white">Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                {% if not publicacoes %}
+                    <div class="item active">
+                        <img class="img-responsive" src="/static/website/img/custom/slide1.jpg" alt="Slider Image">
+                        <div class="container">
+                            <div class="carousel-centered">
+                                <div class="margin-b-40">
+                                    <h1 class="carousel-title"></h1>
+                                    <p class="color-white"></p>
+                                </div>
                             </div>
-                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Click Aqui...</a>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <img class="img-responsive" src="/static/website/img/custom/slide2.jpg" alt="Slider Image">
-                    <div class="container">
-                        <div class="carousel-centered">
-                            <div class="margin-b-40">
-                                <h2 class="carousel-title">Slide 2</h2>
-                                <p class="color-white">Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                    <div class="item">
+                        <img class="img-responsive" src="/static/website/img/custom/slide2.jpg" alt="Slider Image">
+                        <div class="container">
+                            <div class="carousel-centered">
+                                <div class="margin-b-40">
+                                    <h2 class="carousel-title"></h2>
+                                    <p class="color-white"></p>
+                                </div>
                             </div>
-                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Click Aqui...</a>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <img class="img-responsive" src="/static/website/img/custom/slide3.jpg" alt="Slider Image">
-                    <div class="container">
-                        <div class="carousel-centered">
-                            <div class="margin-b-40">
-                                <h2 class="carousel-title">Slide 3</h2>
-                                <p class="color-white">Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                    <div class="item">
+                        <img class="img-responsive" src="/static/website/img/custom/slide3.jpg" alt="Slider Image">
+                        <div class="container">
+                            <div class="carousel-centered">
+                                <div class="margin-b-40">
+                                    <h2 class="carousel-title"></h2>
+                                    <p class="color-white"></p>
+                                </div>
                             </div>
-                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Click Aqui...</a>
                         </div>
                     </div>
-                </div>
+                {% else %}
+                    {% for publicacao in publicacoes %}
+                        {% if forloop.counter0 == 0 %}
+                            <div class="item active">
+                                <img class="img-responsive" src="/media/{{publicacao.imagem}}" alt="Slider Image">
+                                <div class="container">
+                                    <div class="carousel-centered">
+                                        <div class="margin-b-40">
+                                            <h1 class="carousel-title">{{publicacao.titulo}}</h1>
+                                            <p class="color-white">{{publicacao.resumo}}</p>
+                                        </div>
+                                        <a href="{% url 'website:noticia' publicacao.pk %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver mais...</a>
+                                        <a href="{% url 'website:noticia-lista' %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver Todas</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="item">
+                              <img class="img-responsive" src="/media/{{publicacao.imagem}}" alt="Slider Image">
+                                <div class="container">
+                                    <div class="carousel-centered">
+                                        <div class="margin-b-40">
+                                            <h1 class="carousel-title">{{publicacao.titulo}}</h1>
+                                            <p class="color-white">{{publicacao.resumo}}</p>
+                                        </div>
+                                        <a href="{% url 'website:noticia' publicacao.pk %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver mais...</a>
+                                        <a href="{% url 'website:noticia-lista' %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver Todas</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
         <!--========== SLIDER ==========-->
@@ -158,90 +195,70 @@
         </div>
         <!-- End About -->
 
-
-        <!-- Latest Products -->
-        <div id="products">
-            <div class="content-lg container">
-                <div class="row margin-b-40">
-                    <div class="col-sm-6">
-                        <h2>Projetos Recentes</h2>
-                        <p>
-                        	Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation
-                        </p>
+        {% if projetos %}
+            <!-- Latest Products -->
+            <div id="products">
+                <div class="content-lg container">
+                    <div class="row margin-b-40">
+                        <div class="col-sm-6">
+                            <h2>
+                                <a href="{% url 'website:projetorecente-lista' %}">
+                                    Projetos Recentes
+                                </a>
+                            </h2>
+                            <p>
+                            	Conheça um pouco sobre nosso trabalho e acompanhe nossos projetos.
+                            </p>
+                        </div>
                     </div>
+                    <!--// end row -->
+
+                    <div class="row">
+                        {% for projeto in projetos %}
+                            <!-- Latest Products -->
+                            <div class="col-sm-4 sm-margin-b-50">
+                                <div class="margin-b-20">
+                                    <img class="img-responsive projeto-image" src="/media/{{projeto.imagem}}" alt="Ultimos Projetos">
+                                </div>
+                                <h4>
+                                    <a href="{% url 'website:projetorecente' projeto.pk %}">
+                                        {{projeto.titulo}}
+                                    </a> 
+                                    <br/>
+                                    <span class="text-uppercase margin-l-20">{{projeto.tipo}}</span>
+                                </h4>
+                                <p>{{projeto.resumo}}</p>
+                                <a class="link" href="{% url 'website:projetorecente' projeto.pk %}">Detalhes</a>
+                            </div>
+                            <!-- End Latest Products -->
+                        {% endfor %}
+                    </div>
+                    <!--// end row -->
+
+                    {% if clientes %}
+        	            <!-- Clients -->
+        	            <div class="content-lg container">
+        	                <!-- Swiper Clients -->
+        	                <div class="swiper-slider swiper-clients">
+        	                    <!-- Swiper Wrapper -->
+        	                    <div class="swiper-wrapper">
+                                    {% for cliente in clientes %}
+            	                        <div class="swiper-slide">
+            	                            <img class="swiper-clients-img cliente-image" src="/media/{{cliente.imagem}}" alt="{{cliente.nome}}" title="{{cliente.nome}}">
+            	                        </div>
+                                    {% endfor %}
+        	                    </div>
+        	                    <!-- End Swiper Wrapper -->
+        	                </div>
+        	                <!-- End Swiper Clients -->
+        	            </div>
+        	            <!-- End Clients -->
+                    {% endif %}
                 </div>
-                <!--// end row -->
 
-                <div class="row">
-                    <!-- Latest Products -->
-                    <div class="col-sm-4 sm-margin-b-50">
-                        <div class="margin-b-20">
-                            <img class="img-responsive" src="/static/website/img/970x647/01.jpg" alt="Latest Products Image">
-                        </div>
-                        <h4><a href="#">Projeto 1</a> <span class="text-uppercase margin-l-20">Lago Ornamental</span></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                        <a class="link" href="#">Detalhes</a>
-                    </div>
-                    <!-- End Latest Products -->
-
-                    <!-- Latest Products -->
-                    <div class="col-sm-4 sm-margin-b-50">
-                        <div class="margin-b-20">
-                            <img class="img-responsive" src="/static/website/img/970x647/02.jpg" alt="Latest Products Image">
-                        </div>
-                        <h4><a href="#">Projeto 2</a> <span class="text-uppercase margin-l-20">Lago Ornamental</span></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                        <a class="link" href="#">Detalhes</a>
-                    </div>
-                    <!-- End Latest Products -->
-
-                    <!-- Latest Products -->
-                    <div class="col-sm-4 sm-margin-b-50">
-                        <div class="margin-b-20">
-                            <img class="img-responsive" src="/static/website/img/970x647/03.jpg" alt="Latest Products Image">
-                        </div>
-                        <h4><a href="#">Projeto 3</a> <span class="text-uppercase margin-l-20">Lago Ornamental</span></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-                        <a class="link" href="#">Detalhes</a>
-                    </div>
-                    <!-- End Latest Products -->
-                </div>
-                <!--// end row -->
-
-	            <!-- Clients -->
-	            <div class="content-lg container">
-	                <!-- Swiper Clients -->
-	                <div class="swiper-slider swiper-clients">
-	                    <!-- Swiper Wrapper -->
-	                    <div class="swiper-wrapper">
-	                        <div class="swiper-slide">
-	                            <img class="swiper-clients-img" src="/static/website/img/clients/01.png" alt="Clients Logo">
-	                        </div>
-	                        <div class="swiper-slide">
-	                            <img class="swiper-clients-img" src="/static/website/img/clients/02.png" alt="Clients Logo">
-	                        </div>
-	                        <div class="swiper-slide">
-	                            <img class="swiper-clients-img" src="/static/website/img/clients/03.png" alt="Clients Logo">
-	                        </div>
-	                        <div class="swiper-slide">
-	                            <img class="swiper-clients-img" src="/static/website/img/clients/04.png" alt="Clients Logo">
-	                        </div>
-	                        <div class="swiper-slide">
-	                            <img class="swiper-clients-img" src="/static/website/img/clients/05.png" alt="Clients Logo">
-	                        </div>
-	                        <div class="swiper-slide">
-	                            <img class="swiper-clients-img" src="/static/website/img/clients/06.png" alt="Clients Logo">
-	                        </div>
-	                    </div>
-	                    <!-- End Swiper Wrapper -->
-	                </div>
-	                <!-- End Swiper Clients -->
-	            </div>
-	            <!-- End Clients -->
             </div>
-
-        </div>
-        <!-- End Latest Products -->
+            <!-- End Latest Products -->
+        {% endif %}
 
         <!-- Services -->
         <div id="services">
@@ -560,98 +577,105 @@
         <!-- End Work -->
 
 
-        <!-- Contact -->
-		<div id="contact">
-		    <!-- Contact List -->
-		    <div class="section-seperator">
-		        <div class="content-lg container">
-		            <div class="row">
-		                <!-- Contact List -->
-		                <div class="col-sm-4 sm-margin-b-50">
-		                    <h3><a href="http://ft-seo.ch/">Zurich</a> <span class="text-uppercase margin-l-20">Human Resources</span></h3>
-		                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-		                    <ul class="list-unstyled contact-list">
-		                        <li><i class="margin-r-10 color-base icon-call-out"></i> +41 60 66 555 44 33</li>
-		                        <li><i class="margin-r-10 color-base icon-envelope"></i> hr@flameonepage.com</li>
-		                    </ul>
-		                </div>
-		                <!-- End Contact List -->
+        {% if informacoes %}
+            <!-- Contact -->
+    		<div id="contact">
+    		    <!-- Contact List -->
+    		    <div class="section-seperator">
+    		        <div class="content-lg container">
+    		            <div class="row">
+                            {% for informacao in informacoes %}
+        		                <!-- Contact List -->
+        		                <div class="col-sm-4 sm-margin-b-50">
+        		                    <h3>
+                                        {{informacao.nome}}
+                                        {% if informacao.cargo %}
+                                            <span class="text-uppercase margin-l-20">
+                                                {{informacao.cargo}}
+                                            </span>
+                                        {% endif %}
+                                    </h3>
+                                    {% if informacao.descricao %}
+        		                      <p>{{informacao.descricao}}</p>
+                                    {% endif %}
+        		                    <ul class="list-unstyled contact-list">
+                                        {% for telefone in informacao.telefones.all %}
+                                            <li>
+                                                <i class="margin-r-10 color-base icon-call-out"></i> 
+                                                {{telefone.numero}}
+                                            </li>
+                                        {% endfor %}
+                                        {% if informacao.email %}
+                                            <li>
+                                                <i class="margin-r-10 color-base icon-envelope"></i>
+                                                {{informacao.email}}
+                                            </li>
+                                        {% endif %}
+                                        {% if informacao.endereco %}
+                                            <li>
+                                                <i class="margin-r-10 color-base icon-address"></i>
+                                                {{informacao.email}}
+                                            </li>
+                                        {% endif %}
+        		                    </ul>
+        		                </div>
+        		                <!-- End Contact List -->
+                            {% endfor %}
+    		            </div>
+    		            <!--// end row -->
+    		            <br/><br/>
+    		            <div class="row">
+    		            	<h3>Fale Conosco</h3>
 
-		                <!-- Contact List -->
-		                <div class="col-sm-4 sm-margin-b-50">
-		                    <h3><a href="http://ft-seo.ch/">Malta</a> <span class="text-uppercase margin-l-20">Development</span></h3>
-		                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-		                    <ul class="list-unstyled contact-list">
-		                        <li><i class="margin-r-10 color-base icon-call-out"></i> +356 7965 1257</li>
-		                        <li><i class="margin-r-10 color-base icon-envelope"></i> developmemt@flameonepage.com</li>
-		                    </ul>
-		                </div>
-		                <!-- End Contact List -->
+                            {% if message %}
+                                <div class="alert alert-success fade in alert-dismissable" style="margin-top:18px;">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                    <strong>Obrigado pelo contato.</strong>  Retornaremos o mais breve possível.
+                                </div>
+                            {% endif %}
 
-		                <!-- Contact List -->
-		                <div class="col-sm-4 sm-margin-b-50">
-		                    <h3><a href="http://ft-seo.ch/">Manchester</a> <span class="text-uppercase margin-l-20">CEO</span></h3>
-		                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incdidunt ut laboret dolor magna ut consequat siad esqudiat dolor</p>
-		                    <ul class="list-unstyled contact-list">
-		                        <li><i class="margin-r-10 color-base icon-call-out"></i> +44 654 583 5518</li>
-		                        <li><i class="margin-r-10 color-base icon-envelope"></i> ceo@flameonepage.com</li>
-		                    </ul>
-		                </div>
-		                <!-- End Contact List -->
-		            </div>
-		            <!--// end row -->
-		            <br/><br/>
-		            <div class="row">
-		            	<h3>Fale Conosco</h3>
+    		            	<form id="form-contato" class="form-contato" autocomplete="off" method="post" enctype="multipart/form-data" role="form">
+    		            	{% csrf_token %}
+    							<div class="col-md-12">
+    								<div class="row">
+    									<div class="col-md-6">
+    										<div class="form-group">
+    											{{ form.nome }}
+    										</div>
+    									</div>
+    									<div class="col-md-6">
+    										<div class="form-group">
+    											{{ form.telefone }}
+    										</div>
+    									</div>
+    									<div class="col-md-12">
+    										<div class="form-group">
+    											{{ form.email }}
+    										</div>
+    									</div>
+    									<div class="col-md-12">
+    										<div class="form-group">
+    											<textarea name="descricao" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem"></textarea>
+    										</div>
+    									</div>
+    									<div class="col-md-12">
+    										<div class="form-group">
+    											<input type="submit" value="Enviar Mensagem" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">
+    										</div>
+    									</div>
+    								</div>
+    							</div>
+    						</form>
+    		            </div>
 
-                        {% if message %}
-                            <div class="alert alert-success fade in alert-dismissable" style="margin-top:18px;">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                                <strong>Obrigado pelo contato.</strong>  Retornaremos o mais breve possível.
-                            </div>
-                        {% endif %}
-
-		            	<form id="form-contato" class="form-contato" autocomplete="off" method="post" enctype="multipart/form-data" role="form">
-		            	{% csrf_token %}
-							<div class="col-md-12">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											{{ form.nome }}
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											{{ form.telefone }}
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											{{ form.email }}
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<textarea name="descricao" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem"></textarea>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="submit" value="Enviar Mensagem" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-		            </div>
-
-		        </div>
-		    </div>
-		    <!-- End Contact List -->
+    		        </div>
+    		    </div>
+    		    <!-- End Contact List -->
+            {% endif %}
 
 		    <!-- Google Map -->
 		    <div class="map height-300">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.0694570748947!2d7.455080415208266!3d46.94067397914616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e39d0cf20e8d1%3A0x9daac4cd3043d067!2sThunstrasse+50%2C+3005+Bern%2C+Switzerland!5e0!3m2!1sen!2sin!4v1496749852928" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.286900506427!2d-43.138453985043085!3d-22.418224885262486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99aa4ca5d89121%3A0x6f29c2967da6920f!2sAquariomaniacos!5e0!3m2!1spt-BR!2sbr!4v1504277674967" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
 			</div>
 
 

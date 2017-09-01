@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User as Usuario
 from django.contrib.auth import update_session_auth_hash
 from django.utils import timezone
+from django.forms import modelformset_factory
 import json
 
 from apps.website.models import *
@@ -185,58 +186,7 @@ class ContatoDelete(View):
     def get(self, request, pk):
         contato = Contato.objects.get(pk=pk).delete()
         return redirect(reverse_lazy("painel:contato-listar"))
-
-
-
-class DoacaoList(View):
-    def get(self, request):
-        obj_list = Doacao.objects.all().order_by('-data')
-
-        paginator = Paginator(obj_list, 25)
-        page = request.GET.get('page')
-        try:
-            doacoes = paginator.page(page)
-        except PageNotAnInteger:
-            doacoes = paginator.page(1)
-        except EmptyPage:
-            doacoes = paginator.page(paginator.num_pages)
-        context = {'doacoes': doacoes}
-        return render(request, 'doacao/list.html', context)
-
-class DoacaoDetail(View):
-    def get(self, request, pk):
-        doacao = Doacao.objects.get(pk=pk)
-        doacao.is_visualizada = True
-        doacao.save()
-        form = DoacaoForm(instance=doacao)
-        form.fields['nome'].widget.attrs['disabled'] = True
-        form.fields['rg'].widget.attrs['disabled'] = True
-        form.fields['cpf'].widget.attrs['disabled'] = True
-        form.fields['email'].widget.attrs['disabled'] = True
-        form.fields['nome'].widget.attrs['disabled'] = True
-        form.fields['telefone'].widget.attrs['disabled'] = True
-        form.fields['celular'].widget.attrs['disabled'] = True
-        form.fields['cep'].widget.attrs['disabled'] = True
-        form.fields['rua'].widget.attrs['disabled'] = True
-        form.fields['bairro'].widget.attrs['disabled'] = True
-        form.fields['cidade'].widget.attrs['disabled'] = True
-        form.fields['estado'].widget.attrs['disabled'] = True
-        form.fields['valor'].widget.attrs['disabled'] = True
-        form.fields['modalidade'].widget.attrs['disabled'] = True
-        form.fields['banco'].widget.attrs['disabled'] = True
-        form.fields['conta'].widget.attrs['disabled'] = True
-        form.fields['agencia'].widget.attrs['disabled'] = True
-        form.fields['titular'].widget.attrs['disabled'] = True
-        form.fields['cpf_cnpj'].widget.attrs['disabled'] = True
-
-        context = {'form':form, 'doacao':pk}
-        return render (request, 'doacao/detail.html', context)
-
-class DoacaoDelete(View):
-    def get(self, request, pk):
-        doacao = Doacao.objects.get(pk=pk).delete()
-        return redirect(reverse_lazy("painel:doacao-listar"))
-    
+            
 
 
 class ProjetoRegister(View):
@@ -364,59 +314,150 @@ class FotoDelete(View):
         return redirect(reverse_lazy("painel:album-listar"))
 
 
-
-class TelefoneRegister(View):
+class InformacaoRegister(View):
     def get(self, request):
-        form = TelefoneForm()
-        context = {'form':form}
-        return render (request, 'telefone/register.html', context)
+        form = InformacaoForm(prefix='form')
+        formset = modelformset_factory(Telefone, form=TelefoneForm, can_delete=False, extra=1)
+        formset = formset(queryset=Telefone.objects.none(), prefix='formset')
+
+        context = {'form':form, 'formset':formset}
+        return render (request, 'informacao/register.html', context)
 
     def post(self, request):
-        form = TelefoneForm(request.POST)
+        form = InformacaoForm(request.POST, prefix='form')
+        formset = modelformset_factory(Telefone, form=TelefoneForm, can_delete=False, extra=1)
+        formset = formset(request.POST, prefix='formset')
+
         context = {'form':form}
         if form.is_valid():
             obj = form.save(commit=False)
             obj.usuario = request.user
             obj.save()
-            return redirect(reverse_lazy("painel:telefone-listar"))
-        else:
-            return render (request, 'telefone/register.html', context)
 
-class TelefoneEdit(View):
+            instances = formset.save(commit=False)
+            for instance in instances:
+                instance.save()
+                obj.telefones.add(instance)
+
+            return redirect(reverse_lazy("painel:informacao-listar"))
+        else:
+            return render (request, 'informacao/register.html', context)
+
+
+class InformacaoEdit(View):
     def get(self, request, pk):
-        telefone = Telefone.objects.get(pk=pk)
-        form = TelefoneForm(instance=telefone)
-        context = {'form':form, 'telefone':telefone}
-        return render (request, 'telefone/edit.html', context)
+        informacao = Informacao.objects.get(pk=pk)
+
+        form = InformacaoForm(instance=informacao, prefix='form')
+        formset = modelformset_factory(Telefone, form=TelefoneForm, can_delete=True, extra=0)
+        formset = formset(queryset=informacao.telefones.all(), prefix='formset')
+
+        context = {'form':form, 'formset':formset, 'informacao':informacao}
+        return render (request, 'informacao/edit.html', context)
 
     def post(self, request, pk):
-        telefone = Telefone.objects.get(pk=pk)
-        form = TelefoneForm(request.POST, instance=telefone)
-        context = {'form':form}
+        informacao = Informacao.objects.get(pk=pk)
+
+        form = InformacaoForm(request.POST, instance=informacao, prefix='form')
+        formset = modelformset_factory(Telefone, form=TelefoneForm, can_delete=True, extra=0)
+        formset = formset(request.POST, prefix='formset')
+
+        context = {'form':form, 'formset':formset, 'informacao':informacao}
         if form.is_valid():
             obj = form.save(commit=False)
             obj.usuario = request.user
             obj.save()
-            return redirect(reverse_lazy("painel:telefone-listar"))
-        else:
-            return render (request, 'telefone/edit.html', context)
 
-class TelefoneList(View):
+            instances = formset.save(commit=False)
+            for fields in formset.deleted_objects:
+                fields.delete()
+
+            for instance in instances:
+                instance.save()
+                obj.telefones.add(instance)
+
+            return redirect(reverse_lazy("painel:informacao-listar"))
+        else:
+            return render (request, 'informacao/edit.html', context)
+
+
+class InformacaoList(View):
     def get(self, request):
-        obj_list = Telefone.objects.all().order_by('-data')
+        obj_list = Informacao.objects.all().order_by('-data')
 
         paginator = Paginator(obj_list, 25)
         page = request.GET.get('page')
         try:
-            telefones = paginator.page(page)
+            informacoes = paginator.page(page)
         except PageNotAnInteger:
-            telefones = paginator.page(1)
+            informacoes = paginator.page(1)
         except EmptyPage:
-            telefones = paginator.page(paginator.num_pages)
-        context = {'telefones': telefones}
-        return render(request, 'telefone/list.html', context)
+            informacoes = paginator.page(paginator.num_pages)
+        context = {'informacoes': informacoes}
+        return render(request, 'informacao/list.html', context)
 
-class TelefoneDelete(View):
+
+class InformacaoDelete(View):
     def get(self, request, pk):
-        telefones = Telefone.objects.get(pk=pk).delete()
-        return redirect(reverse_lazy("painel:telefone-listar"))
+        informacoes = Informacoes.objects.get(pk=pk).delete()
+        return redirect(reverse_lazy("painel:informacao-listar"))
+
+
+class ClienteRegister(View):
+    def get(self, request):
+        form = ClienteForm()
+        context = {'form':form}
+        return render (request, 'cliente/register.html', context)
+
+    def post(self, request):
+        form = ClienteForm(request.POST, request.FILES)
+        context = {'form':form}
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
+            obj.save()
+            return redirect(reverse_lazy("painel:cliente-listar"))
+        else:
+            return render (request, 'cliente/register.html', context)
+
+
+class ClienteEdit(View):
+    def get(self, request, pk):
+        cliente = Cliente.objects.get(pk=pk)
+        form = ClienteForm(instance=cliente)
+        context = {'form':form, 'cliente':cliente}
+        return render (request, 'cliente/edit.html', context)
+
+    def post(self, request, pk):
+        cliente = Cliente.objects.get(pk=pk)
+        form = ClienteForm(request.POST, request.FILES, instance=cliente)
+        context = {'form':form}
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
+            obj.save()
+            return redirect(reverse_lazy("painel:cliente-listar"))
+        else:
+            return render (request, 'cliente/edit.html', context)
+
+
+class ClienteList(View):
+    def get(self, request):
+        obj_list = Cliente.objects.all().order_by('-data')
+
+        paginator = Paginator(obj_list, 25)
+        page = request.GET.get('page')
+        try:
+            clientes = paginator.page(page)
+        except PageNotAnInteger:
+            clientes = paginator.page(1)
+        except EmptyPage:
+            clientes = paginator.page(paginator.num_pages)
+        context = {'clientes': clientes}
+        return render(request, 'cliente/list.html', context)
+
+
+class ClienteDelete(View):
+    def get(self, request, pk):
+        clientes = Cliente.objects.get(pk=pk).delete()
+        return redirect(reverse_lazy("painel:cliente-listar"))

@@ -15,7 +15,12 @@ from apps.painel.models import *
 class Home(View):
     def get(self, request):
     	form = ContatoForm
-    	context = {'form':form, 'message':False}
+    	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
+    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:3]
+    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
+    	informacoes = Informacao.objects.filter(status=True)
+
+    	context = {'form':form, 'message':False, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes, 'informacoes':informacoes}
     	return render (request, 'home.html', context)
 
     def post(self, request, *args, **kwargs):
@@ -25,7 +30,12 @@ class Home(View):
     		obj.save()
 
     	form = ContatoForm()
-    	context = {'form':form, 'message':True}
+    	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
+    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:3]
+    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
+    	informacoes = Informacao.objects.filter(status=True)
+
+    	context = {'form':form, 'message':True, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes, 'informacoes':informacoes}
     	return render (request, 'home.html', context)
 
 
@@ -66,27 +76,26 @@ class Noticia(View):
 		context = {'publicacao':publicacao}
 		return render(request, 'noticia/noticia.html', context)
 
+
 class ListaNoticias(View):
 	def get(self, request):
-		publicacoes = Publicacao.objects.all()
-		context = {'publicacoes':publicacoes}
+		publicacoes = Publicacao.objects.filter(status=True)
+		slideshow = publicacoes.filter(slideshow=True)
+		context = {'publicacoes':publicacoes, 'slideshow':slideshow}
 		return render(request, 'noticia/list.html', context)
 
 
+class ProjetoRecente(View):
+	def get(self, request, pk):
+		projeto = Projeto.objects.get(pk=pk)
+		slideshow = Publicacao.objects.filter(status=True, slideshow=True)
+		context = {'projeto':projeto, 'slideshow':slideshow}
+		return render(request, 'projetorecente/projeto.html', context)
 
-class Contato(View):
+
+class ListaProjetosRecente(View):
 	def get(self, request):
-		form = ContatoForm
-		telefones = Telefone.objects.all()
-		context = {'form':form, 'message':False, 'telefones':telefones}
-		return render (request, 'contato.html', context)
-
-	def post(self, request, *args, **kwargs):
-		form = ContatoForm(request.POST)
-		telefones = Telefone.objects.all()
-		if form.is_valid():
-			obj = form.save(commit=False)
-			obj.save()
-		form = ContatoForm()
-		context = {'form':form, 'message':True, 'telefones':telefones}
-		return render (request, 'contato.html', context)
+		projetos = Projeto.objects.filter(status=True).order_by('-data')
+		slideshow = Publicacao.objects.filter(status=True, slideshow=True)
+		context = {'projetos':projetos, 'slideshow':slideshow}
+		return render(request, 'projetorecente/list.html', context)

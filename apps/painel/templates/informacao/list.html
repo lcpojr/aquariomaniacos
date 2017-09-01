@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="/static/painel/build/css/lib/bootstrap-table/bootstrap-table.min.css">
 {% endblock %}
 {% block content %}
-{% if projetos %}
+{% if informacoes %}
 <div class="box-typical box-typical-full-height" style="min-height: 444px;">
 	<section class="box-typical">
 		<div id="toolbar">
 			<div class="bootstrap-table-header">
-				Projetos
+				Informações de Contato
 			</div>
 		</div>
 		<div class="table-responsive">
@@ -33,37 +33,37 @@
 			data-response-handler="responseHandler">
 				<thead>
 					<tr>
-						<th data-field="imagem" data-sortable="true">Miníatura</th>
-						<th data-field="nome" data-sortable="true">Titulo</th>
-						<th data-field="tipo" data-sortable="true">Tipo</th>
-						<th data-field="telefone" data-sortable="true">Resumo</th>
-						<th data-field="data" data-sortable="true">Data</th>
+						<th data-field="nome" data-sortable="true">Nome</th>
+						<th data-field="cargo" data-sortable="true">Cargo</th>
+						<th data-field="email" data-sortable="true">Email</th>
+						<th data-field="endereco" data-sortable="true">Endereço</th>
 						<th data-field="criado por" data-sortable="true">Criado por</th>
+						<th data-field="data" data-sortable="true">Criado em</th>
 						<th data-field="status" data-sortable="true">Status</th>
 						<th data-field="" data-sortable="true">Opções</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for projeto in projetos %}
+					{% for informacao in informacoes %}
 						<tr>
-							<td><img src="/media/{{projeto.imagem}}" width=100 /></td>
-							<td>{{ projeto.titulo }} </td>
-							<td>{{ projeto.tipo }} </td>
-							<td>{{ projeto.resumo|truncatechars:150 }}</td>
-							<td>{{ projeto.data }}</td>
-							<td>{{ projeto.usuario }}</td>
+							<td>{{ informacao.nome }}</td>
+							<td>{{ informacao.cargo }}</td>
+							<td>{{ informacao.email }}</td>
+							<td>{{ informacao.endereco }}</td>
+							<td>{{ informacao.usuario }}</td>
+							<td>{{ informacao.data }}</td>
 							<td>
-								{% if projeto.status %}
-									Ativo <i class="fa fa-check"></i>
+								{% if informacao.status %}
+									Ativa <i class="fa fa-check"></i>
 								{% else %}
-									Inativo <i class="fa fa-times"></i>
+									Inativa <i class="fa fa-times"></i>
 								{% endif %}
 							</td>
 							<td style="text-align: center;">
-			                  <a href="{% url 'painel:projeto-editar' projeto.pk %}" class="like">
+			                  <a href="{% url 'painel:informacao-editar' informacao.pk %}" class="like">
 			                    <i class="font-icon font-icon-pencil"></i>
 			                  </a>
-			                  <a href="{% url 'painel:projeto-deletar' projeto.pk %}" class="like">
+			                  <a href="{% url 'painel:informacao-deletar' informacao.pk %}" class="like">
 			                    <i class="font-icon font-icon-trash"></i>
 			                  </a>				                  
 			                </td> 
@@ -75,9 +75,9 @@
 	</section>
 	<nav aria-label="Page navigation example">
 	    <ul class="pagination">
-	      {% if projetos.has_previous %}
+	      {% if informacoes.has_previous %}
 	        <li class="page-item">
-	          <a class="page-link" href="?page={{ projetos.previous_page_number }}" aria-label="Previous">
+	          <a class="page-link" href="?page={{ informacoes.previous_page_number }}" aria-label="Previous">
 	            <span aria-hidden="true">&laquo;</span>
 	            <span class="sr-only">Anterior</span>
 	          </a>
@@ -91,13 +91,13 @@
 	        </li>
 	      {% endif %}
 	      
-	      {% for page in projetos.paginator.page_range%}
-	        <li class="page-item {% if page == projetos.number %} active {% endif %}"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+	      {% for page in informacoes.paginator.page_range%}
+	        <li class="page-item {% if page == informacoes.number %} active {% endif %}"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
 	      {% endfor %}
 
-	      {% if projetos.has_next %}
+	      {% if informacoes.has_next %}
 	        <li class="page-item">
-	          <a class="page-link" href="?page={{ projetos.next_page_number }}" aria-label="Next">
+	          <a class="page-link" href="?page={{ informacoes.next_page_number }}" aria-label="Next">
 	            <span aria-hidden="true">&raquo;</span>
 	            <span class="sr-only">Proximo</span>
 	          </a>
@@ -120,11 +120,11 @@
 			<div class="add-model-screen-user">
 				<i class="font-icon font-icon-user"></i>
 			</div>
-			<h2>Aqui serão listados seus projetos</h2>
+			<h2>Aqui serão listados suas informacoes de contato</h2>
 			<p class="lead color-blue-grey-lighter">
 				Parece que você ainda não tem nenhum
 				<br>
-				<b>Projeto</b> cadastrada.
+				<b>Informação</b> cadastrado.
 			</p>
 			<!--<a href="" class="btn"></a>-->
 		</div>

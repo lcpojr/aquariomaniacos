@@ -19,24 +19,13 @@
                 <div class="menu-container">
                     <ul class="nav navbar-nav navbar-nav-right">
                         <li class="js_nav-item nav-item">
-                            <a class="nav-item-child nav-item-hover" href="#body">Home</a>
+                            <a class="nav-item-child nav-item-hover" href="{% url 'website:home' %}">Home</a>
                         </li>
                         <li class="js_nav-item nav-item">
-                            <a class="nav-item-child nav-item-hover" href="#about">Sobre nós</a>
-                        </li>
-                        {% if projetos %}
-                            <li class="js_nav-item nav-item">
-                                <a class="nav-item-child nav-item-hover" href="#products">Projetos</a>
-                            </li>
-                        {% endif %}
-                        <li class="js_nav-item nav-item">
-                            <a class="nav-item-child nav-item-hover" href="#services">Serviços</a>
+                            <a class="nav-item-child nav-item-hover" href="{% url 'website:noticia-lista' %}">Publicações</a>
                         </li>
                         <li class="js_nav-item nav-item">
-                            <a class="nav-item-child nav-item-hover" href="#work">Portfólio</a>
-                        </li>
-                        <li class="js_nav-item nav-item">
-                            <a class="nav-item-child nav-item-hover" href="#contact">Contato</a>
+                            <a class="nav-item-child nav-item-hover" href="{% url 'website:projetorecente-lista' %}">Projetos</a>
                         </li>
                     </ul>
                 </div>

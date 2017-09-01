@@ -34,7 +34,7 @@ class UsuarioForm(UserCreationForm):
 class PublicacaoForm(forms.ModelForm):
 	class Meta:
 		model = Publicacao
-		fields = ['titulo', 'resumo', 'imagem', 'conteudo']
+		fields = ['titulo', 'resumo', 'imagem', 'conteudo', 'status', 'slideshow']
 
 	def __init__(self, *args, **kwargs):
 		super(PublicacaoForm, self).__init__(*args, **kwargs)
@@ -42,6 +42,8 @@ class PublicacaoForm(forms.ModelForm):
 		self.fields['resumo'].widget.attrs['class'] = 'form-control'
 		self.fields['imagem'].widget.attrs['class'] = 'form-control'
 		self.fields['conteudo'].widget.attrs['class'] = 'form-control summernote'
+		self.fields['status'].widget.attrs['class'] = 'form-control'
+		self.fields['slideshow'].widget.attrs['class'] = 'form-control'
 
 		self.fields['titulo'].widget.attrs['placeholder'] = 'Título da publicação'
 		self.fields['resumo'].widget.attrs['placeholder'] = 'Breve resumo da publicação'
@@ -87,18 +89,28 @@ class ChangePasswordForm(PasswordChangeForm):
 class ProjetoForm(forms.ModelForm):
 	class Meta:
 		model = Projeto
-		fields = ['titulo', 'descricao']
+		fields = ['titulo', 'resumo', 'tipo', 'imagem', 'resumo', 'conteudo', 'data', 'status']
 
 	def __init__(self, *args, **kwargs):
 		super(ProjetoForm, self).__init__(*args, **kwargs)
 		self.fields['titulo'].widget.attrs['class'] = 'form-control'
-		self.fields['descricao'].widget.attrs['class'] = 'form-control'
+		self.fields['resumo'].widget.attrs['class'] = 'form-control'
+		self.fields['tipo'].widget.attrs['class'] = 'form-control'
+		self.fields['imagem'].widget.attrs['class'] = 'form-control'
+		self.fields['conteudo'].widget.attrs['class'] = 'form-control'
+		self.fields['data'].widget.attrs['class'] = 'form-control data'
+		self.fields['status'].widget.attrs['class'] = 'form-control data'
 
 		self.fields['titulo'].widget.attrs['placeholder'] = 'Título do projeto'
-		self.fields['descricao'].widget.attrs['placeholder'] = 'Descrição do projeto'
+		self.fields['resumo'].widget.attrs['placeholder'] = 'Descrição do projeto'
+		self.fields['tipo'].widget.attrs['placeholder'] = 'Tipo do Projeto'
+		self.fields['conteudo'].widget.attrs['placeholder'] = 'Conteúdo do Projeto'
+		self.fields['data'].widget.attrs['placeholder'] = 'Data do Projeto'
 
 		self.fields['titulo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
-		self.fields['descricao'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+		self.fields['tipo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+		self.fields['resumo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+		self.fields['conteudo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
 
 
 
@@ -134,3 +146,44 @@ class TelefoneForm(forms.ModelForm):
 		self.fields['numero'].widget.attrs['placeholder'] = 'Numero do telefone com DDD.'
 
 		self.fields['numero'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+
+
+class InformacaoForm(forms.ModelForm):
+	class Meta:
+		model = Informacao
+		exclude = ['usuario', 'telefones', 'data']
+
+	def __init__(self, *args, **kwargs):
+		super(InformacaoForm, self).__init__(*args, **kwargs)
+
+		self.fields['nome'].widget.attrs['class'] = 'form-control'
+		self.fields['cargo'].widget.attrs['class'] = 'form-control'
+		self.fields['descricao'].widget.attrs['class'] = 'form-control'
+		self.fields['email'].widget.attrs['class'] = 'form-control'
+		self.fields['endereco'].widget.attrs['class'] = 'form-control'
+		self.fields['status'].widget.attrs['class'] = 'form-control'
+
+		self.fields['nome'].widget.attrs['placeholder'] = 'Nome do Contato'
+		self.fields['cargo'].widget.attrs['placeholder'] = 'Cargo'
+		self.fields['descricao'].widget.attrs['placeholder'] = 'Descrição'
+		self.fields['email'].widget.attrs['placeholder'] = 'Email'
+		self.fields['endereco'].widget.attrs['placeholder'] = 'Endereço'
+
+		self.fields['nome'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+
+
+class ClienteForm(forms.ModelForm):
+	class Meta:
+		model = Cliente
+		fields = ['nome', 'imagem', 'status']
+
+	def __init__(self, *args, **kwargs):
+		super(ClienteForm, self).__init__(*args, **kwargs)
+		self.fields['nome'].widget.attrs['class'] = 'form-control'
+		self.fields['imagem'].widget.attrs['class'] = 'form-control'
+		self.fields['status'].widget.attrs['class'] = 'form-control'
+
+		self.fields['nome'].widget.attrs['placeholder'] = 'Nome do Cliente'
+		self.fields['imagem'].widget.attrs['placeholder'] = 'Logomarca do Cliente'
+
+		self.fields['nome'].widget.attrs['data-validation'] = '[NOTEMPTY]'

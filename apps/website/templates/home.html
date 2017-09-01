@@ -577,12 +577,12 @@
         <!-- End Work -->
 
 
-        {% if informacoes %}
-            <!-- Contact -->
-    		<div id="contact">
-    		    <!-- Contact List -->
-    		    <div class="section-seperator">
-    		        <div class="content-lg container">
+        <!-- Contact -->
+		<div id="contact">
+		    <!-- Contact List -->
+		    <div class="section-seperator">
+		        <div class="content-lg container">
+                    {% if informacoes %}
     		            <div class="row">
                             {% for informacao in informacoes %}
         		                <!-- Contact List -->
@@ -623,55 +623,58 @@
                             {% endfor %}
     		            </div>
     		            <!--// end row -->
-    		            <br/><br/>
-    		            <div class="row">
-    		            	<h3>Fale Conosco</h3>
+                    {% endif %}
 
-                            {% if message %}
-                                <div class="alert alert-success fade in alert-dismissable" style="margin-top:18px;">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                                    <strong>Obrigado pelo contato.</strong>  Retornaremos o mais breve possível.
-                                </div>
-                            {% endif %}
+		            <br/><br/>
 
-    		            	<form id="form-contato" class="form-contato" autocomplete="off" method="post" enctype="multipart/form-data" role="form">
-    		            	{% csrf_token %}
-    							<div class="col-md-12">
-    								<div class="row">
-    									<div class="col-md-6">
-    										<div class="form-group">
-    											{{ form.nome }}
-    										</div>
-    									</div>
-    									<div class="col-md-6">
-    										<div class="form-group">
-    											{{ form.telefone }}
-    										</div>
-    									</div>
-    									<div class="col-md-12">
-    										<div class="form-group">
-    											{{ form.email }}
-    										</div>
-    									</div>
-    									<div class="col-md-12">
-    										<div class="form-group">
-    											<textarea name="descricao" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem"></textarea>
-    										</div>
-    									</div>
-    									<div class="col-md-12">
-    										<div class="form-group">
-    											<input type="submit" value="Enviar Mensagem" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">
-    										</div>
-    									</div>
-    								</div>
-    							</div>
-    						</form>
-    		            </div>
+		            <div class="row">
+		            	<h3>Fale Conosco</h3>
 
-    		        </div>
-    		    </div>
-    		    <!-- End Contact List -->
-            {% endif %}
+                        {% if message %}
+                            <div class="alert alert-success fade in alert-dismissable" style="margin-top:18px;">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                <strong>Obrigado pelo contato.</strong>  Retornaremos o mais breve possível.
+                            </div>
+                        {% endif %}
+
+		            	<form id="form-contato" class="form-contato" autocomplete="off" method="post" enctype="multipart/form-data" role="form">
+		            	{% csrf_token %}
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form.nome }}
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form.telefone }}
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											{{ form.email }}
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<textarea name="descricao" class="form-control" id="" cols="30" rows="7" placeholder="Mensagem"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="submit" value="Enviar Mensagem" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+		            </div>
+
+		        </div>
+		    </div>
+		    <!-- End Contact List -->
+            
 
 		    <!-- Google Map -->
 		    <div class="map height-300">

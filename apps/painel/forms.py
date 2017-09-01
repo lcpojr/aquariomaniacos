@@ -125,9 +125,9 @@ class AlbumForm(forms.ModelForm):
 		self.fields['data_album'].widget.attrs['class'] = 'form-control data'
 		self.fields['categoria'].widget.attrs['class'] = 'form-control'
 
-		self.fields['titulo'].widget.attrs['placeholder'] = 'Título da publicação'
+		self.fields['titulo'].widget.attrs['placeholder'] = 'Título do album'
 		self.fields['data_album'].widget.attrs['placeholder'] = '__/__/____'
-		self.fields['categoria'].widget.attrs['placeholder'] = 'Categoria da publicação'
+		self.fields['categoria'].widget.attrs['placeholder'] = 'Categoria do album'
 
 		self.fields['titulo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
 		self.fields['data_album'].widget.attrs['data-validation'] = '[NOTEMPTY]'

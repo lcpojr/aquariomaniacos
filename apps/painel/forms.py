@@ -148,6 +148,30 @@ class TelefoneForm(forms.ModelForm):
 		self.fields['numero'].widget.attrs['data-validation'] = '[NOTEMPTY]'
 
 
+class InformacaoForm(forms.ModelForm):
+	class Meta:
+		model = Informacao
+		exclude = ['usuario', 'telefones', 'data']
+
+	def __init__(self, *args, **kwargs):
+		super(InformacaoForm, self).__init__(*args, **kwargs)
+
+		self.fields['nome'].widget.attrs['class'] = 'form-control'
+		self.fields['cargo'].widget.attrs['class'] = 'form-control'
+		self.fields['descricao'].widget.attrs['class'] = 'form-control'
+		self.fields['email'].widget.attrs['class'] = 'form-control'
+		self.fields['endereco'].widget.attrs['class'] = 'form-control'
+		self.fields['status'].widget.attrs['class'] = 'form-control'
+
+		self.fields['nome'].widget.attrs['placeholder'] = 'Nome do Contato'
+		self.fields['cargo'].widget.attrs['placeholder'] = 'Cargo'
+		self.fields['descricao'].widget.attrs['placeholder'] = 'Descrição'
+		self.fields['email'].widget.attrs['placeholder'] = 'Email'
+		self.fields['endereco'].widget.attrs['placeholder'] = 'Endereço'
+
+		self.fields['nome'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+
+
 class ClienteForm(forms.ModelForm):
 	class Meta:
 		model = Cliente

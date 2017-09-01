@@ -16,10 +16,11 @@ class Home(View):
     def get(self, request):
     	form = ContatoForm
     	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
-    	projetos = Projeto.objects.filter().order_by('-data')[:3]
+    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:3]
     	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
+    	informacoes = Informacao.objects.filter(status=True)
 
-    	context = {'form':form, 'message':False, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes}
+    	context = {'form':form, 'message':False, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes, 'informacoes':informacoes}
     	return render (request, 'home.html', context)
 
     def post(self, request, *args, **kwargs):
@@ -30,10 +31,11 @@ class Home(View):
 
     	form = ContatoForm()
     	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
-    	projetos = Projeto.objects.filter(status=True).order_by('data')[:3]
+    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:3]
     	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
+    	informacoes = Informacao.objects.filter(status=True)
 
-    	context = {'form':form, 'message':True, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes}
+    	context = {'form':form, 'message':True, 'publicacoes':publicacoes, 'projetos':projetos, 'clientes':clientes, 'informacoes':informacoes}
     	return render (request, 'home.html', context)
 
 
@@ -93,7 +95,7 @@ class ProjetoRecente(View):
 
 class ListaProjetosRecente(View):
 	def get(self, request):
-		projetos = Projeto.objects.filter().order_by('-data')
+		projetos = Projeto.objects.filter(status=True).order_by('-data')
 		slideshow = Publicacao.objects.filter(status=True, slideshow=True)
 		context = {'projetos':projetos, 'slideshow':slideshow}
 		return render(request, 'projetorecente/list.html', context)

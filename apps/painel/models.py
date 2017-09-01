@@ -75,9 +75,7 @@ class Imagem(models.Model):
 
 
 class Telefone(models.Model):
-	numero = models.CharField('Número', max_length=50, unique=True)
-	usuario = models.ForeignKey(User)
-	data = models.DateTimeField('Data de Criação', default=timezone.now)
+	numero = models.CharField('Número', max_length=50)
 
 	def __str__(self):
 	    return str(self.numero)
@@ -86,6 +84,23 @@ class Telefone(models.Model):
 		return re.sub('[^0-9]', '', self.numero)
 
 
+class Informacao(models.Model):
+	usuario = models.ForeignKey(User)
+	nome = models.CharField('Nome', max_length=50, unique=True)
+	cargo = models.CharField('Cargo', max_length=50, blank=True)
+	descricao = models.TextField('Descrição', max_length=50, blank=True)
+	email = models.EmailField('Email', max_length=50, blank=True)
+	telefones = models.ManyToManyField(Telefone)
+	endereco = models.CharField('Endereço', max_length=200, blank=True)
+	lat = models.CharField('Latitude', max_length=200, blank=True)
+	lng = models.CharField('Longitude', max_length=200, blank=True)
+	data = models.DateTimeField('Data de Criação', default=timezone.now)
+	status = models.BooleanField('Ativar Informação', default=True)
+
+	def __str__(self):
+	    return str(self.numero)
+
+	    
 class Cliente(models.Model):
 	id = models.AutoField(primary_key=True)
 	usuario = models.ForeignKey(User)

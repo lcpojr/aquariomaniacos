@@ -1,0 +1,299 @@
+{% extends 'painel/base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="/static/painel/build/css/separate/pages/others.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/bootstrap-select/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/painel/build/css/separate/vendor/select2.min.css">
+<style>
+	#id_form-endereco {
+		background-color: #fff;
+		font-family: Roboto;
+		font-size: 15px;
+		font-weight: 300;
+		margin-left: 12px;
+		padding: 0 11px 0 13px;
+		text-overflow: ellipsis;
+		width: 80%;
+		margin-top: 10px;
+		border: 1px solid transparent;
+		border-radius: 2px 0 0 2px;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		height: 32px;
+		outline: none;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	}
+	#id_form-endereco:focus {
+		border-color: #4d90fe;
+	}
+</style>
+{% endblock %}
+{% block content %}
+<form id="form-informacao" class="form-informacao" name="form_informacao"  method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="box-typical box-typical-padding">
+		<div class="row">
+			<div class="col-lg-2 col-sm-4 text-center">
+				<h2 class="m-t-lg"><i class="text-muted font-icon font-icon-question"></i></h2>
+				<h5 class="m-b semibold">Editando uma Informação de Contato</h5>
+				<p>
+					Você poderá editas suas informações de contato ao preencher este formulário.
+				</p>
+			</div>
+			<div class="col-lg-10 col-sm-8">
+
+				<h5 class="m-t-lg with-border">Editar Informação</h5>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.nome.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.nome.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.nome }}
+								</p>
+								<small class="text-muted">{{ form.nome.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-6">
+						<fieldset class="form-group">
+							<label for="{{form.cargo.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.cargo.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.cargo }}
+								</p>
+								<small class="text-muted">{{ form.cargo.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+					<div class="col-lg-6">
+						<fieldset class="form-group">
+							<label for="{{form.email.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.email.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.email }}
+								</p>
+								<small class="text-muted">{{ form.email.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.endereco.id_for_label}}" class="form-label semibold">
+								{{ form.endereco.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.endereco }}
+								</p>
+								<small class="text-muted">{{ form.endereco.errors }}</small>
+							</div>
+						</fieldset>
+						<input type="hidden" id="id_form-lat" class="form-control" name="form-lat" value="{{informacao.lat}}"/>
+						<input type="hidden" id="id_form-lng" class="form-control" name="form-lng" value="{{informacao.lng}}"/>
+						<div id="map" style="height:300px;"></div>
+					</div>
+				</div>
+
+				<br/>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<fieldset class="form-group">
+							<label for="{{form.descricao.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.descricao.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.descricao }}
+								</p>
+								<small class="text-muted">{{ form.descricao.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2">
+						<fieldset class="form-group">
+							<label for="{{form.status.id_for_label}}" class="col-sm2 form-label semibold">
+								{{ form.status.label_tag }}
+							</label>
+							<div class="col-sm10">
+								<p class="form-control-static">
+									{{ form.status }}
+								</p>
+								<small class="text-muted">{{ form.status.errors }}</small>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<h5 class="m-t-lg with-border">Telefones</h5>
+				<div class="row" id="formset-telefone">
+					{% for field in formset %}
+						{{ field.id }}
+						<div class="tr" id="{{ formset.prefix }}-row">
+							<div class="col-sm-12">
+								{{ field.DELETE }}
+								<fieldset class="form-group">
+									<label for="{{field.numero.id_for_label}}" class="col-sm2 form-label semibold">
+										{{ field.numero.label_tag }}
+									</label>
+									<div class="col-sm10 col-lg-4">
+										<p class="form-control-static">
+											{{field.numero}}
+										</p>
+										<small class="text-muted">{{ field.numero.errors }}</small>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+					{% endfor %}
+					{{formset.management_form}}
+				</div>
+
+				<br/>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="form-group">
+							<button class="btn btn-save" type="submit">Salvar Informação</button>
+							<div class="pull-right">
+								<a class="btn btn-secondary-outline" href="{% url 'painel:informacao-listar' %}">Cancelar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</form>
+{% endblock %}
+{% block javascript %}>
+<script src="/static/painel/build/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/painel/build/js/lib/select2/select2.full.min.js"></script>
+<script src="/static/painel/build/js/lib/html5-form-validation/jquery.validation.min.js"></script>
+<script src="/static/painel/build/js/lib/jquery-formset/jquery.formset.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZoKMZu1sv8gRqUgaE9oo0OyTVjFwlCMY&libraries=places&callback=initMap"
+async defer></script>
+<script>
+	function initMap() {
+		var lat = '{{informacao.lat}}';
+		var lng = '{{informacao.lng}}';
+		if(lat && lng){
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: parseFloat(lat), lng: parseFloat(lng)},
+				zoom: 15
+			});	
+
+			var marker = new google.maps.Marker({
+				map: map,
+				anchorPoint: new google.maps.Point(0, -29)
+			});
+
+			marker.setPosition({lat:parseFloat(lat), lng:parseFloat(lng)});
+			marker.setVisible(true);
+		}else{
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: -22.4182249, lng: -43.138454},
+				zoom: 10
+			});				
+		}
+
+		var input = (document.getElementById('id_form-endereco'));
+		map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+		var autocomplete = new google.maps.places.Autocomplete(input);
+		autocomplete.bindTo('bounds', map);
+
+		var infowindow = new google.maps.InfoWindow();
+		var marker = new google.maps.Marker({
+			map: map,
+			anchorPoint: new google.maps.Point(0, -29)
+		});
+
+		autocomplete.addListener('place_changed', function() {
+			infowindow.close();
+			marker.setVisible(false);
+			var place = autocomplete.getPlace();
+
+			if (!place.geometry) {
+				window.alert("No details available for input: '" + place.name + "'");
+				return;
+			}
+
+			// If the place has a geometry, then present it on a map.
+			if (place.geometry.viewport) {
+				map.fitBounds(place.geometry.viewport);
+			} else {
+				map.setCenter(place.geometry.location);
+				map.setZoom(17);  // Why 17? Because it looks good.
+			}
+
+			marker.setIcon(({
+				url: place.icon,
+				size: new google.maps.Size(71, 71),
+				origin: new google.maps.Point(0, 0),
+				anchor: new google.maps.Point(17, 34),
+				scaledSize: new google.maps.Size(35, 35)
+			}));
+
+			marker.setPosition(place.geometry.location);
+			marker.setVisible(true);
+
+			$("#id_form-lat").val(place.geometry.location.lat);
+			$("#id_form-lng").val(place.geometry.location.lng);
+
+			var address = '';
+			if (place.address_components) {
+				address = [
+					(place.address_components[0] && place.address_components[0].short_name || ''),
+					(place.address_components[1] && place.address_components[1].short_name || ''),
+					(place.address_components[2] && place.address_components[2].short_name || '')
+				].join(' ');
+			}
+			infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+			infowindow.open(map, marker);
+		});
+	}
+</script>
+<script>
+	$(function() {
+		var maskBehavior = function (val) {
+		 		return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+			},options = {onKeyPress: function(val, e, field, options) {
+			 	field.mask(maskBehavior.apply({}, arguments), options);
+			}
+		};
+	    $('.form-informacao').validate({
+	        submit : {
+	            settings : {
+	                inputContainer : '.form-group',
+	                errorListClass : 'form-tooltip-error'
+	            },
+	        }
+	    });
+        $('#formset-telefone .tr').formset({
+            prefix: '{{formset.prefix}}'
+        });
+        $(".add-row").click(function() {
+        	$('.celular').mask(maskBehavior, options);
+        });
+	});
+</script>
+{% endblock %}

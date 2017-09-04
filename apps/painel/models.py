@@ -100,6 +100,9 @@ class Informacao(models.Model):
 	def __str__(self):
 	    return str(self.numero)
 
+	def get_maps_url(self):
+		return self.endereco.replace(' ', '+') + '/@' + self.lat + ',' + self.lng + ',13z'
+
 	    
 class Cliente(models.Model):
 	id = models.AutoField(primary_key=True)

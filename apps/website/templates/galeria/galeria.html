@@ -1,38 +1,138 @@
-{% extends "site/base.html" %} 
+{% extends "website/base-noticia.html" %} 
 {% load staticfiles %}
 
-{% block content %}
-		<div id="fh5co-portfolio">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
-						<h3>{{imagens.0.album.titulo}}</h3>
-						<p>{{imagens.0.album.data_album}}</p>
-					</div>
-				</div>
-				<div class="row row-bottom-padded-md">
-					<div class="col-md-12">
-						<ul id="fh5co-portfolio-list">
-							{% for imagem in imagens %}
-								<div class="col-md-4">
-									<img class="imageZoom" src="/media/{{imagem.imagem}}" data-animate-effect="fadeIn"/>
-								</div>
-							{% endfor %}
-						</ul>		
-					</div>
-				</div>
-			</div>
-		</div>
+{% block css %}
+	<link rel="stylesheet" href="/static/website/css/zoomify.css">
 {% endblock %}
 
-{% block css %}
-	<link rel="stylesheet" href="/static/site/css/custom.css">
-	<link rel="stylesheet" href="/static/site/css/zoomify.css">
+{% block content %}
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="container">
+            <ol class="carousel-indicators">
+                {% if not slideshow %}
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                {% else %}
+                    {% for slide in slideshow %}
+                        {% if forloop.counter0 == 0 %}
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        {% else %}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ol>
+        </div>
+
+        <div class="carousel-inner" role="listbox">
+            {% if not slideshow %}
+                <div class="item active">
+                    <img class="img-responsive" src="/static/website/img/custom/slide1.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h1 class="carousel-title"></h1>
+                                <p class="color-white"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/static/website/img/custom/slide2.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title"></h2>
+                                <p class="color-white"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/static/website/img/custom/slide3.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title"></h2>
+                                <p class="color-white"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                {% for slide in slideshow %}
+                    {% if forloop.counter0 == 0 %}
+                        <div class="item active">
+                            <img class="img-responsive" src="/media/{{slide.imagem}}" alt="Slider Image">
+                            <div class="container">
+                                <div class="carousel-centered">
+                                    <div class="margin-b-40">
+                                        <h1 class="carousel-title">{{slide.titulo}}</h1>
+                                        <p class="color-white">{{slide.resumo}}</p>
+                                    </div>
+                                    <a href="{% url 'website:noticia' slide.pk %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver mais...</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="item">
+                          <img class="img-responsive" src="/media/{{slide.imagem}}" alt="Slider Image">
+                            <div class="container">
+                                <div class="carousel-centered">
+                                    <div class="margin-b-40">
+                                        <h1 class="carousel-title">{{slide.titulo}}</h1>
+                                        <p class="color-white">{{slide.resumo}}</p>
+                                    </div>
+                                    <a href="{% url 'website:noticia' slide.pk %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver mais...</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <!--========== SLIDER ==========-->
+
+
+    <div class="bg-color-sky-light">
+        <div class="content-lg container">
+            <div class="row">
+				<div id="fh5co-portfolio">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
+								<h3>{{imagens.0.album.titulo}}</h3>
+								<p>{{imagens.0.album.data_album}}</p>
+							</div>
+						</div>
+						<div class="row row-bottom-padded-md">
+							<div class="col-md-12">
+								{% for imagem in imagens %}
+									<div class="col-lg-4 col-md-4 col-sm-6">
+										<div class="fh5co-blog animate-box">
+											<img class="img-responsive galeria-image imageZoom" src="/media/{{imagem.imagem}}" data-animate-effect="fadeIn" />
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
+
+
 
 {% block javascript %}
-<script src="/static/site/js/zoomify.js"></script>
-<script>
-	$('.imageZoom').zoomify();
-</script>
+	<script src="/static/website/js/zoomify.js"></script>
+	<script>
+		$('.imageZoom').zoomify();
+	</script>
 {% endblock %}

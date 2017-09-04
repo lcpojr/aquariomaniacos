@@ -122,6 +122,30 @@
                         </div>
                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/camping.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
                     </div>
+
+                    <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div><br/><br/>
+
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                        <div class="margin-b-60">
+                          <h2>Air-Soft, Arqueria e Tiro esportivo</h2>
+                          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>  
+                        </div>
+                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/arqueria.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
+                    </div>
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 sm-margin-b-30">
+                        <div class="margin-b-60">
+                            <h2>Mergulho</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
+                        </div>
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/mergulho.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".2s">
+                    </div>
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                        <div class="margin-t-60 margin-b-60">
+                            <h2>Pesca esportiva</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
+                        </div>
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/pesca.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
+                    </div>
 				</div>
                 <!-- End Masonry Grid -->
             </div>
@@ -218,17 +242,18 @@
                             <!-- Latest Products -->
                             <div class="col-sm-4 sm-margin-b-50">
                                 <div class="margin-b-20">
-                                    <img class="img-responsive projeto-image" src="/media/{{projeto.imagem}}" alt="Ultimos Projetos">
+                                    <a href="{% url 'website:projetorecente' projeto.pk %}">
+                                        <img class="img-responsive projeto-image" src="/media/{{projeto.imagem}}" alt="Ultimos Projetos">
+                                    </a>
                                 </div>
                                 <h4>
                                     <a href="{% url 'website:projetorecente' projeto.pk %}">
                                         {{projeto.titulo}}
                                     </a> 
-                                    <br/>
                                     <span class="text-uppercase margin-l-20">{{projeto.tipo}}</span>
                                 </h4>
                                 <p>{{projeto.resumo}}</p>
-                                <a class="link" href="{% url 'website:projetorecente' projeto.pk %}">Detalhes</a>
+                                <a class="link" href="{% url 'website:projetorecente' projeto.pk %}">Ver Mais</a>
                             </div>
                             <!-- End Latest Products -->
                         {% endfor %}
@@ -266,7 +291,7 @@
                 <div class="content-lg container">
                     <div class="row margin-b-40">
                         <div class="col-sm-6">
-                            <h2>Serviços</h2>
+                            <h2>Produtos</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
                         </div>
                     </div>

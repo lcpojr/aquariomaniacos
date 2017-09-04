@@ -400,7 +400,7 @@ class InformacaoList(View):
 
 class InformacaoDelete(View):
     def get(self, request, pk):
-        informacoes = Informacoes.objects.get(pk=pk).delete()
+        informacao = Informacao.objects.get(pk=pk).delete()
         return redirect(reverse_lazy("painel:informacao-listar"))
 
 

@@ -110,4 +110,4 @@ class Cliente(models.Model):
 	status = models.BooleanField('Ativar Cliente', default=True)
 
 	def __str__(self):
-	    return str(self.titulo)
+	    return str(self.nome)

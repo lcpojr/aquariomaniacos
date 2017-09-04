@@ -14,47 +14,62 @@ from apps.painel.models import *
 
 class Home(View):
     def get(self, request):
-    	form = ContatoForm
-    	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
-    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:6]
-    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:10]
-    	informacoes = Informacao.objects.filter(status=True)
-    	imagens = Imagem.objects.all().order_by('-album__data')
+        form = ContatoForm
+        publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
+        projetos = Projeto.objects.filter(status=True).order_by('-data')[:6]
+        clientes = Cliente.objects.filter(status=True).order_by('-data')[:10]
+        informacoes = Informacao.objects.filter(status=True)
+        albuns = Album.objects.all().order_by('-data')[:6]
+        imagens = Imagem.objects.all().order_by('-album__data')
 
-    	context = {
+        galeria = []
+        for album in albuns:
+            for imagem in imagens:
+                if album.pk == imagem.album.pk:
+                    galeria.append(imagem)
+
+        context = {
     		'form':form, 
     		'message':False, 
     		'publicacoes':publicacoes, 
     		'projetos':projetos, 
     		'clientes':clientes, 
     		'informacoes':informacoes, 
-    		'imagens':imagens
+    		'galeria':galeria
     	}
 
-    	return render (request, 'home.html', context)
+        return render (request, 'home.html', context)
 
     def post(self, request, *args, **kwargs):
-    	form = ContatoForm(request.POST)
-    	if form.is_valid():
-    		obj = form.save(commit=False)
-    		obj.save()
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.save()
 
-    	form = ContatoForm()
-    	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
-    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:6]
-    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:10]
-    	informacoes = Informacao.objects.filter(status=True)
+        form = ContatoForm()
+        publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
+        projetos = Projeto.objects.filter(status=True).order_by('-data')[:6]
+        clientes = Cliente.objects.filter(status=True).order_by('-data')
+        informacoes = Informacao.objects.filter(status=True)
+        albuns = Album.objects.all().order_by('-data')[:5]
+        imagens = Imagem.objects.all().order_by('-album__data')
 
-    	context = {
-    		'form':form, 
-    		'message':True, 
-    		'publicacoes':publicacoes, 
-    		'projetos':projetos, 
-    		'clientes':clientes, 
-    		'informacoes':informacoes,
-    		'imagens':imagens
-    	}
-    	return render (request, 'home.html', context)
+        galeria = []
+        for album in albuns:
+            for imagem in imagens:
+                if album.pk == imagem.album.pk:
+                    galeria.append(imagem)
+
+        context = {
+            'form':form, 
+            'message':True, 
+            'publicacoes':publicacoes, 
+            'projetos':projetos, 
+            'clientes':clientes, 
+            'informacoes':informacoes,
+            'galeria':galeria
+        }
+        return render (request, 'home.html', context)
 
 
 class Sobre(View):

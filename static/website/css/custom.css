@@ -22,8 +22,29 @@
   height: 250px;
 }
 
+.projeto-margin{
+  margin-bottom:30px;
+}
+
 .portfolio-image{
 	height: 250px;
+}
+
+.galeria-image{
+  height: 250px;
+}
+
+.galeria-image-big{
+  max-height: 500px;
+}
+
+.galeria-img-home{
+  width:100%;
+  height: 250px;
+}
+
+.galeria-margin{
+  margin-bottom:30px;
 }
 
 #fh5co-blog-section{

@@ -100,8 +100,9 @@
             <div class="content-lg container">
                 <!-- Masonry Grid -->
                 <div class="masonry-grid row">
+
                     <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
-                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 sm-margin-b-30">
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
                         <div class="margin-b-60">
                             <h2>Aquarismo</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
@@ -116,31 +117,31 @@
 						 <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/lagos.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
                     </div>
                     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
-                        <div class="margin-t-60 margin-b-60">
+                        <div class="margin-b-60">
                             <h2>Camping</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
                         </div>
                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/camping.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
                     </div>
 
-                    <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div><br/><br/>
 
-                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                    <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1 margin-t-60"></div><br/><br/>
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
                         <div class="margin-b-60">
-                          <h2>Air-Soft, Arqueria e Tiro esportivo</h2>
+                          <h2>Arqueria e Tiro esportivo</h2>
                           <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>  
                         </div>
                          <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/arqueria.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
                     </div>
-                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 sm-margin-b-30">
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
                         <div class="margin-b-60">
                             <h2>Mergulho</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
                         </div>
                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/mergulho.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".2s">
                     </div>
-                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
-                        <div class="margin-t-60 margin-b-60">
+                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
+                        <div class="margin-b-60">
                             <h2>Pesca esportiva</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
                         </div>
@@ -219,10 +220,11 @@
         </div>
         <!-- End About -->
 
-        {% if projetos %}
-            <!-- Latest Products -->
-            <div id="products">
-                <div class="content-lg container">
+        
+        <!-- Latest Projects -->
+        <div id="projects">
+            <div class="content-lg container">
+                {% if projetos %}
                     <div class="row margin-b-40">
                         <div class="col-sm-6">
                             <h2>
@@ -239,8 +241,8 @@
 
                     <div class="row">
                         {% for projeto in projetos %}
-                            <!-- Latest Products -->
-                            <div class="col-sm-4 sm-margin-b-50">
+                            <!-- Latest Projects -->
+                            <div class="col-sm-4 sm-margin-b-50 projeto-margin">
                                 <div class="margin-b-20">
                                     <a href="{% url 'website:projetorecente' projeto.pk %}">
                                         <img class="img-responsive projeto-image" src="/media/{{projeto.imagem}}" alt="Ultimos Projetos">
@@ -255,38 +257,42 @@
                                 <p>{{projeto.resumo}}</p>
                                 <a class="link" href="{% url 'website:projetorecente' projeto.pk %}">Ver Mais</a>
                             </div>
-                            <!-- End Latest Products -->
+                            <!-- End Latest Projects -->
+                            
                         {% endfor %}
                     </div>
                     <!--// end row -->
+                {% endif %}
 
-                    {% if clientes %}
-        	            <!-- Clients -->
-        	            <div class="content-lg container">
-        	                <!-- Swiper Clients -->
-        	                <div class="swiper-slider swiper-clients">
-        	                    <!-- Swiper Wrapper -->
-        	                    <div class="swiper-wrapper">
-                                    {% for cliente in clientes %}
-            	                        <div class="swiper-slide">
-            	                            <img class="swiper-clients-img cliente-image" src="/media/{{cliente.imagem}}" alt="{{cliente.nome}}" title="{{cliente.nome}}">
-            	                        </div>
-                                    {% endfor %}
-        	                    </div>
-        	                    <!-- End Swiper Wrapper -->
-        	                </div>
-        	                <!-- End Swiper Clients -->
-        	            </div>
-        	            <!-- End Clients -->
-                    {% endif %}
-                </div>
-
+                {% if clientes %}
+    	            <!-- Clients -->
+    	            <div class="content-lg container" id="client">
+    	                <!-- Swiper Clients -->
+    	                <div class="swiper-slider swiper-clients">
+    	                    <!-- Swiper Wrapper -->
+    	                    <div class="swiper-wrapper">
+                                {% for cliente in clientes %}
+        	                        <div class="swiper-slide">
+        	                            <img class="swiper-clients-img cliente-image" src="/media/{{cliente.imagem}}" alt="{{cliente.nome}}" title="{{cliente.nome}}">
+        	                        </div>
+                                {% endfor %}
+    	                    </div>
+    	                    <!-- End Swiper Wrapper -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+    	                </div>
+    	                <!-- End Swiper Clients -->
+    	            </div>
+    	            <!-- End Clients -->
+                {% endif %}
             </div>
-            <!-- End Latest Products -->
-        {% endif %}
 
-        <!-- Services -->
-        <div id="services">
+        </div>
+        <!-- End Latest Projects -->
+        
+
+        <!-- Products -->
+        <div id="products">
             <div class="bg-color-sky-light" data-auto-height="true">
                 <div class="content-lg container">
                     <div class="row margin-b-40">
@@ -379,71 +385,64 @@
                 </div>
             </div>
         </div>
-        <!-- End Service -->
+        <!-- End Products -->
 
-        {% if imagens %}
-            <!-- Work -->
-            <div id="work">
+        {% if galeria %}
+            <!-- Galerie -->
+            <div id="galerie">
                 <div class="section-seperator">
                     <div class="content-md container">
                         <div class="row margin-b-40">
                             <div class="col-sm-6">
-                                <a href="#"><h2>Portfolio</h2></a>
+                                <a href="#"><h2>Galeria</h2></a>
                                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
                             </div>
                         </div>
                         <!--// end row -->
 
                         <!-- Masonry Grid -->
-                        <div class="masonry-grid row">
-                            {% for imagem in imagens %}
-                                {% if forloop.counter < 4 %}
-                                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 md-margin-b-30">
-                                {% elif forloop.counter == 4 %}
-                                    <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
-                                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-b-30">
-                                {% else %}
-                                    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-8 margin-b-30">
-                                {% endif %}
-                                <!-- Work -->
-                                <div class="work work-popup-trigger">
-                                    <div class="work-overlay">
-                                        <img class="full-width img-responsive" src="/media/{{imagem.imagem}}" alt="Album Image">
-                                    </div>
-                                    <div class="work-popup-overlay">
-                                        <div class="work-popup-content">
-                                            <a href="javascript:void(0);" class="work-popup-close">X</a>
-                                            <div class="margin-b-30">
-                                                <h3 class="margin-b-5">
-                                                    {{imagem.album.titulo}}
-                                                </h3>
-                                                <span>{{imagem.album.categoria}}</span>
+                        <div class="row">
+                            {% for imagem in galeria %}
+                                {% ifchanged imagem.album %}
+                                    <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
+                                        <!-- Work -->
+                                        <div class="work work-popup-trigger">
+                                            <div class="work-overlay">
+                                                <img class="full-width img-responsive galeria-img-home" src="/media/{{imagem.imagem}}" alt="Album Image">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-12 work-popup-content-divider sm-margin-b-20">
-                                                    <div class="margin-t-10 sm-margin-t-0">
-                                                        <p>
-                                                        <img class="img-responsive galeria-image" src="/media/{{imagem.imagem}}" alt="Ultimos Projetos">
-                                                        </p>
-                                                        <ul class="list-inline work-popup-tag">
-                                                            <li class="work-popup-tag-item">
-                                                                <a class="work-popup-tag-link" href="#">Ver mais ...</a>
-                                                            </li>
-                                                        </ul>
+                                            <div class="work-popup-overlay">
+                                                <div class="work-popup-content">
+                                                    <a href="javascript:void(0);" class="work-popup-close">X</a>
+                                                    <div class="margin-b-30">
+                                                        <h3 class="margin-b-5">
+                                                            <a href="{% url 'website:galeria' imagem.album.pk %}">
+                                                                {{imagem.album.titulo}} ({{imagem.album.data_album|date:'d/m/Y'}})
+                                                            </a>
+                                                        </h3>
+                                                        <span>{{imagem.album.categoria}}</span>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 sm-margin-b-20">
+                                                            <div class="margin-t-10 sm-margin-t-0">
+                                                                <a href="{% url 'website:galeria' imagem.album.pk %}">
+                                                                    <img class="img-responsive galeria-image-big" src="/media/{{imagem.imagem}}" alt="Ultimos Projetos"/>
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- End Work -->
                                     </div>
-                                </div>
-                                <!-- End Work -->
+                                {% endifchanged %}
                             {% endfor %}
                         </div>
                         <!-- End Masonry Grid -->
                     </div>
                 </div>
             </div>
-            <!-- End Work -->
+            <!-- End Galerie -->
         {% endif %}
 
 

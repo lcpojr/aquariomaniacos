@@ -1,51 +1,147 @@
-{% extends "site/base.html" %} 
+{% extends "website/base-noticia.html" %} 
 {% load staticfiles %}
 
-{% block css %}
-	<!-- Custom css -->
-	<link rel="stylesheet" href="/static/site/css/custom.css">
-{% endblock %}
-
 {% block content %}
+
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="container">
+            <ol class="carousel-indicators">
+                {% if not slideshow %}
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                {% else %}
+                    {% for slide in slideshow %}
+                        {% if forloop.counter0 == 0 %}
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        {% else %}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ol>
+        </div>
+
+        <div class="carousel-inner" role="listbox">
+            {% if not slideshow %}
+                <div class="item active">
+                    <img class="img-responsive" src="/static/website/img/custom/slide1.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h1 class="carousel-title"></h1>
+                                <p class="color-white"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/static/website/img/custom/slide2.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title"></h2>
+                                <p class="color-white"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="/static/website/img/custom/slide3.jpg" alt="Slider Image">
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h2 class="carousel-title"></h2>
+                                <p class="color-white"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                {% for slide in slideshow %}
+                    {% if forloop.counter0 == 0 %}
+                        <div class="item active">
+                            <img class="img-responsive" src="/media/{{slide.imagem}}" alt="Slider Image">
+                            <div class="container">
+                                <div class="carousel-centered">
+                                    <div class="margin-b-40">
+                                        <h1 class="carousel-title">{{slide.titulo}}</h1>
+                                        <p class="color-white">{{slide.resumo}}</p>
+                                    </div>
+                                    <a href="{% url 'website:noticia' slide.pk %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver mais...</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="item">
+                          <img class="img-responsive" src="/media/{{slide.imagem}}" alt="Slider Image">
+                            <div class="container">
+                                <div class="carousel-centered">
+                                    <div class="margin-b-40">
+                                        <h1 class="carousel-title">{{slide.titulo}}</h1>
+                                        <p class="color-white">{{slide.resumo}}</p>
+                                    </div>
+                                    <a href="{% url 'website:noticia' slide.pk %}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Ver mais...</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <!--========== SLIDER ==========-->
+
 	{% if galeria %}
-		<div id="fh5co-portfolio">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center heading-section animate-box">
-						<h3>Galeria de Fotos</h3>
-						<p>Acompanhe nosso trabalho, visite nossa galeria</p>
+	    <div class="bg-color-sky-light">
+	        <div class="content-lg container">
+	            <div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+						<h2>Conheça nosso trabalho e faça parte</h2>
+						<h4>Fique por dentro de nossas ultimas atividades.</h4>
 					</div>
 				</div>
-				<div class="row row-bottom-padded-md">
-					<div class="col-md-12">
-						<ul id="fh5co-portfolio-list">
-							{% for imagem in galeria %}	
-								{% ifchanged imagem.album %}
-									<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(/media/{{imagem.imagem}}); ">
-										<a href="{% url 'website:galeria' imagem.album.pk %}" class="color-3">
-											<div class="case-studies-summary">
-												<span>{{imagem.album.categoria}}</span>
-												<h2>{{imagem.album.titulo}}</h2>
-											</div>
-										</a>
-									</li>
-								{% endifchanged %}
-							{% endfor %}
-						</ul>		
-					</div>
+				<br/><br/><br/>
+	            <div class="row">
+					{% for imagem in galeria %}
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="fh5co-blog animate-box">
+								<a href="{% url 'website:galeria' imagem.album.pk %}">
+									<img class="img-responsive galeria-image" src="/media/{{imagem.imagem}}" alt="{{imagem.album.titulo}}">
+								</a>
+								<div class="blog-text">
+									<div class="prod-title">
+										<br/>
+										<h3>
+											<a href="{% url 'website:galeria' imagem.album.pk %}">
+												{{imagem.album.titulo}}
+											</a>
+										</h3>
+										<span class="posted_by">{{imagem.album.data}}</span>
+										<p class="galeria-resumo" title="{{imagem.album.resumo}}">
+											{{imagem.album.resumo|truncatechars:100}}
+										</p>
+										<p><a href="{% url 'website:galeria' imagem.album.pk %}">Ver mais...</a></p>
+									</div>
+								</div> 
+							</div>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
+	</div>
 	{% else %}
-		<div id="fh5co-feature-product" class="fh5co-section-gray">
-			<div class="container">
-				<div class="row">
+	    <div class="bg-color-sky-light">
+	        <div class="content-lg container">
+	            <div class="row">
 					<div class="col-md-12 text-center heading-section">
 						<h3>
-							Infelismente parece que não temos nenhuma foto recente em nossa galeria.
+							Infelismente parece que não temos nenhum album recente.
 							Volte mais tarde e fique por dentro de nossas ultimas atividades.
 						</h3>
-						<p><b>Associação de transformação social (Estação cedro) – ONG</b></p>
+						<p><b>Aquariomaníacos</b></p>
 					</div>
 				</div>
 			</div>

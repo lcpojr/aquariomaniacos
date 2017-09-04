@@ -22,4 +22,4 @@ class ContatoForm(forms.ModelForm):
         self.fields['telefone'].widget.attrs['data-validation'] = '[NOTEMPTY]'
 
         self.fields['descricao'].widget.attrs['class'] = 'form-control'
-        self.fields['descricao'].widget.attrs['placeholder'] = 'Mensagem'
+        self.fields['descricao'].widget.attrs['placeholder'] = 'Digite aqui sua mensagem'

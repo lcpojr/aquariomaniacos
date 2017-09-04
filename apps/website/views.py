@@ -6,10 +6,25 @@ from django.template import RequestContext
 from django.http import (JsonResponse, HttpResponse, HttpResponseForbidden, HttpResponseBadRequest, HttpResponseRedirect)
 from datetime import datetime, timedelta, date
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.core.mail import send_mail
+from django.contrib import sitemaps
 import json
 
 from .forms import *
 from apps.painel.models import *
+
+
+class StaticSitemap(sitemaps.Sitemap):
+    priority = 0.5
+    changefreq = 'monthly'
+
+    def items(self):
+        return ['home']
+
+    def location(self, item):
+        return reverse(item)
 
 
 class Home(View):
@@ -18,7 +33,7 @@ class Home(View):
         publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
         projetos = Projeto.objects.filter(status=True).order_by('-data')[:6]
         clientes = Cliente.objects.filter(status=True).order_by('-data')[:10]
-        informacoes = Informacao.objects.filter(status=True)
+        informacoes = Informacao.objects.filter(status=True).order_by('-data')[:3]
         albuns = Album.objects.all().order_by('-data')[:6]
         imagens = Imagem.objects.all().order_by('-album__data')
 
@@ -45,6 +60,21 @@ class Home(View):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
+
+            subject = "Você recebeu um contato atrávez de seu website aquariomaniacos.com.br"
+            message = obj.descricao
+            email = obj.email
+            contacts = settings.CONTACT_EMAILS
+            template = render_to_string('email.html', {
+                'message':obj.descricao, 
+                'email':obj.email, 
+                'name':obj.nome, 
+                'phone':obj.telefone,
+                'date':obj.data
+            })
+
+            send_mail(subject, message, email, contacts, html_message=template)
+
 
         form = ContatoForm()
         publicacoes = Publicacao.objects.filter(status=True, slideshow=True)

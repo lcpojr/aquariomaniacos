@@ -16,8 +16,8 @@ class Home(View):
     def get(self, request):
     	form = ContatoForm
     	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
-    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:3]
-    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
+    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:6]
+    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:10]
     	informacoes = Informacao.objects.filter(status=True)
     	imagens = Imagem.objects.all().order_by('-album__data')
 
@@ -41,8 +41,8 @@ class Home(View):
 
     	form = ContatoForm()
     	publicacoes = Publicacao.objects.filter(status=True, slideshow=True)
-    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:3]
-    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:5]
+    	projetos = Projeto.objects.filter(status=True).order_by('-data')[:6]
+    	clientes = Cliente.objects.filter(status=True).order_by('-data')[:10]
     	informacoes = Informacao.objects.filter(status=True)
 
     	context = {

@@ -472,19 +472,19 @@
                                         {% for telefone in informacao.telefones.all %}
                                             <li>
                                                 <i class="margin-r-10 color-base icon-call-out"></i> 
-                                                {{telefone.numero}}
+                                                <a href="tel:+55{{telefone.get_numero}}">{{telefone.get_numero}}</a>
                                             </li>
                                         {% endfor %}
                                         {% if informacao.email %}
                                             <li>
                                                 <i class="margin-r-10 color-base icon-envelope"></i>
-                                                {{informacao.email}}
+                                                <a href="mailto:{{informacao.email}}">{{informacao.email}}</a>
                                             </li>
                                         {% endif %}
                                         {% if informacao.endereco %}
                                             <li>
-                                                <i class="margin-r-10 color-base icon-address"></i>
-                                                {{informacao.email}}
+                                                <i class="margin-r-10 color-base fa fa-map-marker"></i>
+                                                <a href="https://www.google.com.br/maps/place/{{informacao.get_maps_url}}">{{informacao.endereco}}</a>
                                             </li>
                                         {% endif %}
         		                    </ul>

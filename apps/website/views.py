@@ -16,17 +16,6 @@ from .forms import *
 from apps.painel.models import *
 
 
-class StaticSitemap(sitemaps.Sitemap):
-    priority = 0.5
-    changefreq = 'monthly'
-
-    def items(self):
-        return ['home']
-
-    def location(self, item):
-        return reverse(item)
-
-
 class Home(View):
     def get(self, request):
         form = ContatoForm
@@ -104,8 +93,9 @@ class Home(View):
 
 class Sobre(View):
     def get(self, request):
-    	context = {}
-    	return render (request, 'sobre.html', context) 
+        slideshow = Publicacao.objects.filter(status=True, slideshow=True)
+        context = {'slideshow':slideshow}
+        return render (request, 'sobre.html', context) 
 
 
 class Galeria(View):

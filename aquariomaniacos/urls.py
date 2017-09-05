@@ -25,10 +25,9 @@ from .sitemaps import *
 sitemaps = {
     'static':StaticViewSitemap,
     'noticia':NoticiaSitemap,
-    'galeria':GaleriaSitemap
+    'galeria':GaleriaSitemap,
+    'projeto':ProjetoSitemap
 }
-
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

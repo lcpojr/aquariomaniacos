@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow:
+Allow: /static/website/
+
+Sitemap: http://www.aquariomaniacos.com.br/sitemap-static.xml

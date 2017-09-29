@@ -153,6 +153,55 @@ class PublicacaoDelete(View):
 
 
 
+class ProdutoRegister(View):
+    def get(self, request):
+        form = ProdutoForm()
+        context = {'form':form}
+        return render (request, 'produto/register.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = ProdutoForm(request.POST, request.FILES)
+        context = {'form':form}
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
+            obj.save()
+            return redirect(reverse_lazy("painel:produto-listar"))
+        else:
+            return render (request, 'produto/register.html', context)
+
+class ProdutoEdit(View):
+    def get(self, request, pk):
+        produto = Produto.objects.get(pk=pk)
+        form = ProdutoForm(instance=produto)
+        context = {'form':form, 'produto':produto}
+        return render (request, 'produto/edit.html', context)
+
+    def post(self, request, pk, *args, **kwargs):
+        produto = Produto.objects.get(pk=pk)
+        form = ProdutoForm(request.POST, request.FILES, instance=produto)
+        context = {'form':form}
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
+            obj.save()
+            return redirect(reverse_lazy("painel:produto-listar"))
+        else:
+            return render (request, 'produto/edit.html', context)
+
+class ProdutoList(View):
+    def get(self, request):
+        produtos = Produto.objects.all()
+        context = {'produtos': produtos}
+        return render(request, 'produto/list.html', context)
+
+class ProdutoDelete(View):
+    def get(self, request, pk):
+        produto = Produto.objects.get(pk=pk).delete()
+        return redirect(reverse_lazy("painel:produto-listar"))
+
+
+
 class ContatoList(View):
     def get(self, request):
         obj_list = Contato.objects.all().order_by('data')

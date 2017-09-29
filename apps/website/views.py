@@ -99,28 +99,35 @@ class Sobre(View):
 
 
 class Galeria(View):
-	def get(self, request, pk):
-		imagens = Imagem.objects.filter(album=pk)
-		context = {'imagens':imagens}
-		return render(request, 'galeria/galeria.html', context)
+    def get(self, request, pk):
+        imagens = Imagem.objects.filter(album=pk)
+        slideshow = Publicacao.objects.filter(status=True, slideshow=True)
+        context = {'imagens':imagens, 'slideshow':slideshow}
+        return render(request, 'galeria/galeria.html', context)
+
+
+class ProdutoGaleria(View):
+    def get(self, request, tipo):
+        produtos = Produto.objects.filter(tipo=tipo)
+        slideshow = Publicacao.objects.filter(status=True, slideshow=True)
+        context = {'produtos':produtos, 'slideshow':slideshow}
+        return render(request, 'produto/galeria-produto.html', context)
 
 
 class ListaGaleria(View):
-	def get(self, request):
-		albuns = Album.objects.all().order_by('-data')[:4]
-		imagens = Imagem.objects.all().order_by('-album__data')
+    def get(self, request):
+        albuns = Album.objects.all().order_by('-data')[:4]
+        imagens = Imagem.objects.all().order_by('-album__data')
+        slideshow = Publicacao.objects.filter(status=True, slideshow=True)
 
-		galeria = []
-		for album in albuns:
-			for imagem in imagens:
-				if album.pk == imagem.album.pk:
-					galeria.append(imagem)
-					break
-				pass
-			pass
-			
-		context = {'galeria':galeria}
-		return render(request, 'galeria/list.html', context)
+        galeria = []
+        for album in albuns:
+            for imagem in imagens:
+                if album.pk == imagem.album.pk:
+                    galeria.append(imagem)
+
+        context = {'galeria':galeria, 'slideshow':slideshow}
+        return render(request, 'galeria/list.html', context)
 
 
 class Noticia(View):

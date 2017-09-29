@@ -4,8 +4,37 @@ from django.contrib.auth.models import User
 from django.contrib.sitemaps import ping_google
 import re
 
+
+
+class Produto(models.Model):
+	TIPO_PRODUTO_CHOICES = (
+		('1', 'Aquarismo'),
+		('2', 'Lago Ornamental'),
+		('3', 'Camping'),
+		('4', 'Arqueria e Tiro esportivo'),
+		('5', 'Mergulho'),
+		('6', 'Pesca esportiva')
+	)
+
+	usuario = models.ForeignKey(User)
+	titulo = models.CharField('Título', max_length=50, unique=True)
+	imagem = models.ImageField('Imagem')
+	descricao = models.TextField('Descricao', blank=True, null=True)
+	status = models.BooleanField('Ativar Produto', default=True)
+	tipo = models.CharField(max_length=25,choices=TIPO_PRODUTO_CHOICES)
+
+	def __str__(self):
+	    return str(self.titulo)
+
+	def save(self, force_insert=False, force_update=False):
+		super(Produto, self).save(force_insert, force_update)
+		try:
+			ping_google()
+		except Exception:
+			pass
+
+
 class Publicacao(models.Model):
-	id = models.AutoField(primary_key=True)
 	usuario = models.ForeignKey(User)
 	titulo = models.CharField('Título', max_length=50, unique=True)
 	resumo = models.TextField('Breve Resumo')
@@ -18,9 +47,15 @@ class Publicacao(models.Model):
 	def __str__(self):
 	    return str(self.titulo)
 
+	def save(self, force_insert=False, force_update=False):
+		super(Publicacao, self).save(force_insert, force_update)
+		try:
+			ping_google()
+		except Exception:
+			pass
+
 
 class Projeto(models.Model):
-	id = models.AutoField(primary_key=True)
 	usuario = models.ForeignKey(User)
 	titulo = models.CharField('Título', max_length=50, unique=True)
 	tipo = models.CharField('Tipo', max_length=50)
@@ -105,7 +140,6 @@ class Informacao(models.Model):
 
 	    
 class Cliente(models.Model):
-	id = models.AutoField(primary_key=True)
 	usuario = models.ForeignKey(User)
 	nome = models.CharField('Nome', max_length=50, unique=True)
 	imagem = models.ImageField('Imagem')

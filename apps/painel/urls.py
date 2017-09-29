@@ -32,6 +32,12 @@ urlpatterns = [
     url(r'^projeto/editar/(?P<pk>\d+)/$', login_required(views.ProjetoEdit.as_view()), name='projeto-editar'),
     url(r'^projeto/deletar/(?P<pk>\d+)/$', login_required(views.ProjetoDelete.as_view()), name='projeto-deletar'),
 
+    # URLS PRODUTO
+    url(r'^produto/$', login_required(views.ProdutoList.as_view()), name='produto-listar'),
+    url(r'^produto/cadastrar/$', login_required(views.ProdutoRegister.as_view()), name='produto-cadastrar'),
+    url(r'^produto/editar/(?P<pk>\d+)/$', login_required(views.ProdutoEdit.as_view()), name='produto-editar'),
+    url(r'^produto/deletar/(?P<pk>\d+)/$', login_required(views.ProdutoDelete.as_view()), name='produto-deletar'),
+
     # URLS ALBUM
     url(r'^album/$', login_required(views.AlbumList.as_view()), name='album-listar'),
     url(r'^album/cadastrar/$', login_required(views.AlbumRegister.as_view()), name='album-cadastrar'),

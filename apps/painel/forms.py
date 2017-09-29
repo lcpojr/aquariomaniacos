@@ -55,6 +55,29 @@ class PublicacaoForm(forms.ModelForm):
 		self.fields['conteudo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
 
 
+class ProdutoForm(forms.ModelForm):
+	class Meta:
+		model = Produto
+		fields = ['titulo', 'imagem', 'descricao', 'status', 'tipo']
+
+	def __init__(self, *args, **kwargs):
+		super(ProdutoForm, self).__init__(*args, **kwargs)
+		self.fields['titulo'].widget.attrs['class'] = 'form-control'
+		self.fields['imagem'].widget.attrs['class'] = 'form-control'
+		self.fields['descricao'].widget.attrs['class'] = 'form-control'
+		self.fields['status'].widget.attrs['class'] = 'form-control'
+		self.fields['tipo'].widget.attrs['class'] = 'form-control'
+
+		self.fields['titulo'].widget.attrs['placeholder'] = 'Título do produto'
+		self.fields['imagem'].widget.attrs['placeholder'] = 'Imagem do produto'
+		self.fields['descricao'].widget.attrs['placeholder'] = 'Breve descrição do produto'
+		self.fields['status'].widget.attrs['placeholder'] = 'Ativar visualização do produto'
+		self.fields['tipo'].widget.attrs['placeholder'] = 'Tipo do produto'
+
+		self.fields['titulo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+		self.fields['imagem'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+		self.fields['tipo'].widget.attrs['data-validation'] = '[NOTEMPTY]'
+
 
 class LoginForm(forms.Form):
 	usuario = forms.CharField(label='Usuário',required=True,max_length=50)

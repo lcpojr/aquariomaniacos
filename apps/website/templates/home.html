@@ -104,21 +104,21 @@
                     <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
                     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
                         <div class="margin-b-60">
-                            <h2>Aquarismo</h2>
+                            <h2><a href="{% url 'website:produto' 1 %}">Aquarismo</a></h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
                         </div>
                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/aquarismo.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".2s">
                     </div>
                     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
                         <div class="margin-b-60">
-                          <h2>Lagos Ornamentais</h2>
+                          <h2><a href="{% url 'website:produto' 2 %}">Lagos Ornamentais</a></h2>
                           <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>  
                         </div>
 						 <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/lagos.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
                     </div>
                     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
                         <div class="margin-b-60">
-                            <h2>Camping</h2>
+                            <h2><a href="{% url 'website:produto' 3 %}">Camping</a></h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
                         </div>
                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/camping.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
@@ -128,21 +128,21 @@
                     <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1 margin-t-60"></div><br/><br/>
                     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
                         <div class="margin-b-60">
-                          <h2>Arqueria e Tiro esportivo</h2>
+                          <h2><a href="{% url 'website:produto' 4 %}">Arqueria e Tiro esportivo</a></h2>
                           <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>  
                         </div>
                          <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/arqueria.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
                     </div>
                     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
                         <div class="margin-b-60">
-                            <h2>Mergulho</h2>
+                            <h2><a href="{% url 'website:produto' 5 %}">Mergulho</a></h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
                         </div>
                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/mergulho.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".2s">
                     </div>
                     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
                         <div class="margin-b-60">
-                            <h2>Pesca esportiva</h2>
+                            <h2><a href="{% url 'website:produto' 6 %}">Pesca esportiva</a></h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna ut consequat siad esqudiat dolor</p>
                         </div>
                         <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/website/img/custom/pesca.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
@@ -154,7 +154,7 @@
             <div class="bg-color-sky-light">
                 <div class="content-lg container">
                     <div class="row">
-                        <div class="col-md-5 col-sm-5 md-margin-b-60">
+                        <div class="col-md-5 col-sm-8 md-margin-b-60">
                             <div class="margin-t-50 margin-b-30">
                                 <h2>Porque nós?</h2>
                                 <p>
@@ -162,58 +162,11 @@
                                 </p>
                             </div>
                             <a href="{% url 'website:sobre' %}" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">
-                                Leia mais...
+                                Sobre nós
                             </a>
                         </div>
-                        <div class="col-md-5 col-sm-7 col-md-offset-2">
-                            <!-- Accordion -->
-                            <div class="accordion">
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <h4 class="panel-title">
-                                                <a class="panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    Motivo 1
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    Motivo 2
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="panel-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingThree">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed panel-title-child" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    Motivo 3
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                            <div class="panel-body">
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Accodrion -->
+                        <div class="col-md-5 col-sm-4 col-md-offset-2">
+                            <img class="foto-sobre" src="/static/website/img/logo-aquariomaniacos.png" />
                         </div>
                     </div>
                     <!--// end row -->
@@ -269,6 +222,7 @@
                 {% if clientes %}
     	            <!-- Clients -->
     	            <div class="content-lg container" id="client">
+                        <h2>Alguns de nossos clientes</h2>
     	                <!-- Swiper Clients -->
     	                <div class="swiper-slider swiper-clients">
     	                    <!-- Swiper Wrapper -->
@@ -292,102 +246,6 @@
         </div>
         <!-- End Latest Projects -->
         
-
-        <!-- Products -->
-        <div id="products">
-            <div class="bg-color-sky-light" data-auto-height="true">
-                <div class="content-lg container">
-                    <div class="row margin-b-40">
-                        <div class="col-sm-6">
-                            <h2>Produtos</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua enim minim veniam exercitation</p>
-                        </div>
-                    </div>
-                    <!--// end row -->
-
-                    <div class="row row-space-1 margin-b-2">
-                        <div class="col-sm-4 sm-margin-b-2">
-                            <div class="service" data-height="height">
-                                <div class="service-element">
-                                    <i class="service-icon icon-chemistry"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h3>Company Formation</h3>
-                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                </div>
-                                <a href="#" class="content-wrapper-link"></a>    
-                            </div>
-                        </div>
-                        <div class="col-sm-4 sm-margin-b-2">
-                            <div class="service bg-color-base" data-height="height">
-                                <div class="service-element">
-                                    <i class="service-icon color-white icon-screen-tablet"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h3 class="color-white">Stuff Management</h3>
-                                    <p class="color-white margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                </div>
-                                <a href="#" class="content-wrapper-link"></a>    
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="service" data-height="height">
-                                <div class="service-element">
-                                    <i class="service-icon icon-badge"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h3>KPI Optimization</h3>
-                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                </div>
-                                <a href="#" class="content-wrapper-link"></a>    
-                            </div>
-                        </div>
-                    </div>
-                    <!--// end row -->
-
-                    <div class="row row-space-1">
-                        <div class="col-sm-4 sm-margin-b-2">
-                            <div class="service" data-height="height">
-                                <div class="service-element">
-                                    <i class="service-icon icon-notebook"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h3>Information Security</h3>
-                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                </div>
-                                <a href="#" class="content-wrapper-link"></a>    
-                            </div>
-                        </div>
-                        <div class="col-sm-4 sm-margin-b-2">
-                            <div class="service" data-height="height">
-                                <div class="service-element">
-                                    <i class="service-icon icon-speedometer"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h3>Recrutinment</h3>
-                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                </div>
-                                <a href="#" class="content-wrapper-link"></a>    
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="service" data-height="height">
-                                <div class="service-element">
-                                    <i class="service-icon icon-badge"></i>
-                                </div>
-                                <div class="service-info">
-                                    <h3>Materials Supply</h3>
-                                    <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
-                                </div>
-                                <a href="#" class="content-wrapper-link"></a>    
-                            </div>
-                        </div>
-                    </div>
-                    <!--// end row -->
-                </div>
-            </div>
-        </div>
-        <!-- End Products -->
 
         {% if galeria %}
             <!-- Galerie -->

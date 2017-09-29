@@ -26,7 +26,8 @@ sitemaps = {
     'static':StaticViewSitemap,
     'noticia':NoticiaSitemap,
     'galeria':GaleriaSitemap,
-    'projeto':ProjetoSitemap
+    'projeto':ProjetoSitemap,
+    'produto':ProdutoSitemap
 }
 
 urlpatterns = [

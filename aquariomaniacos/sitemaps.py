@@ -13,6 +13,18 @@ class StaticViewSitemap(Sitemap):
 		return reverse(url)
 
 
+class ProdutoSitemap(Sitemap):
+	priority = 1.0
+	changefreq = 'daily'
+
+	def items(self):
+		tipos = ['1', '2', '3', '4', '5', '6']
+		return tipos
+
+	def location(self, tipo):
+		return reverse('website:produto', kwargs={'tipo':tipo})
+
+
 class NoticiaSitemap(Sitemap):
 	priority = 1.0
 	changefreq = 'daily'

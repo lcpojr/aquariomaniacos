@@ -1,0 +1,409 @@
+{% extends "base.html" %} 
+{% load staticfiles %}
+
+{% block content %}
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+        <div class="container">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+        </div>
+
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="img-responsive" src="/static/img/custom/slide1.jpg" alt="Slider Image">
+                <div class="container">
+                    <div class="carousel-centered">
+                        <div class="margin-b-40">
+                            <h1 class="carousel-title"></h1>
+                            <p class="color-white"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="img-responsive" src="/static/img/custom/slide2.jpg" alt="Slider Image">
+                <div class="container">
+                    <div class="carousel-centered">
+                        <div class="margin-b-40">
+                            <h2 class="carousel-title"></h2>
+                            <p class="color-white"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="img-responsive" src="/static/img/custom/slide3.jpg" alt="Slider Image">
+                <div class="container">
+                    <div class="carousel-centered">
+                        <div class="margin-b-40">
+                            <h2 class="carousel-title"></h2>
+                            <p class="color-white"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--========== SLIDER ==========-->
+
+    <!--========== PAGE LAYOUT ==========-->
+    <!-- About -->
+    <div id="about">
+        <div class="content-lg container">
+            <!-- Masonry Grid -->
+            <div class="masonry-grid row">
+
+                <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
+                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                    <div class="margin-b-60">
+                        <h2><a href="#">Aquarismo</a></h2>
+                        <p>
+                            Temos a maior variedade de peixes e o mais completo acervo de 
+                            equipamentos para seu aquário.
+                            Com aquarios de designs e tamanhos diferentes para pronta entrega 
+                            ou feitos sobre medida, a Aquariomaníacos , tornará seu sonho realidade.
+                        </p>
+                    </div>
+                    <a href="#" title="Clique aqui e verifique nosso acervo.">
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/img/custom/aquarismo.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".2s">
+                    </a>
+                </div>
+                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                    <div class="margin-b-60">
+                        <h2><a href="#">Lagos Ornamentais</a></h2>
+                        <p>
+                            Especializados em montagem condicionamentos, esterilização, sistemas de filtragem
+                            e bio filtragem , nossa equipe deixara seu lago sempre o mais próximo possível do habitat natural
+                            com peixes nacionais e importados de vivacidade e cores inigualáveis. 
+                        </p>  
+                    </div>
+                    <a href="#">
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/img/custom/lagos.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
+                    </a>
+                </div>
+                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4">
+                    <div class="margin-b-60">
+                        <h2><a href="#">Camping</a></h2>
+                        <p>
+                            Se você planeja acampar e precisa de ajuda, nós temos a melhor solução para você.
+                            <br/>
+                            O melhor equipamento para seu passeio ou aventura, seja na montanha , 
+                            no campo ou na praia , pode contar conosco.
+                            <br/>
+                        </p>
+                    </div>
+                    <a href="#" title="Clique aqui e verifique nosso acervo.">
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/img/custom/camping.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
+                    </a>
+                </div>
+
+
+                <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1 margin-t-60"></div><br/><br/>
+                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
+                    <div class="margin-b-60">
+                        <h2><a href="#">Arqueria e Tiro esportivo</a></h2>
+                        <p>
+                            A Aquariomaníacos, traz para você uma variedade , simultaneamente com os 
+                            lançamentos mundias. 
+                            <br/>
+                            Balestras, carabinas e pistolas,
+                            armamento de air soft, fuzis, arcos recurvos e compostos,
+                            estilingues e zarabatanas.
+                        </p>  
+                    </div>
+                    <a href="#" title="Clique aqui e verifique nosso acervo.">
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/img/custom/arqueria.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".3s">
+                    </a>
+                </div>
+                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
+                    <div class="margin-b-60">
+                        <h2><a href="#">Mergulho</a></h2>
+                        <p>
+                            Acompanhamos você até debaixo d´água , seja na piscina ou em alto mar,
+                            lhe equipando com tudo que você precisa para aproveitar ao máximo sua aventura.
+                            Nadadeiras, óculos, mascaras dentre varios outros. Temos tudo para atende-lo.
+                        </p>
+                    </div>
+                    <a href="#" title="Clique aqui e verifique nosso acervo.">
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/img/custom/mergulho.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".2s">
+                    </a>
+                </div>
+                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-4 margin-t-60">
+                    <div class="margin-b-60">
+                        <h2><a href="#">Pesca esportiva</a></h2>
+                        <p>
+                            Os melhores fornecedores do mundo estão em parceria conosco.
+                            <br/>  
+                            Suporte para todo tipo de pesca. Iscas nacionais e importadas, molinetes e carretilhas, 
+                            vestimentas com proteção ultravioleta.
+                        </p>
+                    </div>
+                    <a href="#" title="Clique aqui e verifique nosso acervo.">
+                        <img class="full-width img-responsive wow fadeInUp portfolio-image" src="/static/img/custom/pesca.jpg" alt="Portfolio Image" data-wow-duration=".3" data-wow-delay=".4s">
+                    </a>
+                </div>
+            </div>
+            <!-- End Masonry Grid -->
+        </div>
+        
+        <div class="bg-color-sky-light">
+            <div class="content-lg container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-8 md-margin-b-60">
+                        <div class="margin-t-50 margin-b-30">
+                            <h2>Porque nós?</h2>
+                            <p>
+                                Somos referência quando se trata de aquarismo e lagos ornamentais, 
+                                contando com parceria e suporte dos maiores paisagistas do país,
+                                estamos sempre prontos para realizar seu projeto com a maior qualidade
+                                e excelência do mercado.
+                                <br/>
+                                Fique por dentro de todas as nossas atividades através de nosso
+                                Facebook clicando
+                                <b><a href="https://www.facebook.com/aquariomaniacos/">AQUI</a></b>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-4 col-md-offset-2">
+                        <img class="foto-sobre" src="/static/img/logo-aquariomaniacos.png" />
+                    </div>
+                </div>
+                <!--// end row -->
+            </div>
+        </div>
+    </div>
+    <!-- End About -->
+
+    <!-- Latest Projects -->
+    <div id="projects">
+        <div class="content-lg container">
+            {% if projetos %}
+                <div class="row margin-b-40">
+                    <div class="col-sm-6">
+                        <h2>
+                            <a href="{% url 'website:projetorecente-lista' %}">
+                                Projetos Recentes
+                            </a>
+                        </h2>
+                        <p>
+                            Conheça um pouco sobre nosso trabalho e acompanhe nossos projetos.
+                        </p>
+                    </div>
+                </div>
+                <!--// end row -->
+
+                <div class="row">
+                    {% for projeto in projetos %}
+                        <!-- Latest Projects -->
+                        <div class="col-sm-4 sm-margin-b-50 projeto-margin">
+                            <div class="margin-b-20">
+                                <a href="{% url 'website:projetorecente' projeto.pk %}">
+                                    <img class="img-responsive projeto-image" src="/media/{{projeto.imagem}}" alt="Ultimos Projetos">
+                                </a>
+                            </div>
+                            <h4>
+                                <a href="{% url 'website:projetorecente' projeto.pk %}">
+                                    {{projeto.titulo}}
+                                </a> 
+                                <span class="text-uppercase margin-l-20">{{projeto.tipo}}</span>
+                            </h4>
+                            <p>{{projeto.resumo}}</p>
+                            <a class="link" href="{% url 'website:projetorecente' projeto.pk %}">Ver Mais</a>
+                        </div>
+                        <!-- End Latest Projects -->
+                        
+                    {% endfor %}
+                </div>
+                <!--// end row -->
+            {% endif %}
+
+            {% if clientes %}
+                <!-- Clients -->
+                <div class="content-lg container" id="client">
+                    <h2>Alguns de nossos clientes</h2>
+                    <!-- Swiper Clients -->
+                    <div class="swiper-slider swiper-clients">
+                        <!-- Swiper Wrapper -->
+                        <div class="swiper-wrapper">
+                            {% for cliente in clientes %}
+                                <div class="swiper-slide">
+                                    <img class="swiper-clients-img cliente-image" src="/media/{{cliente.imagem}}" alt="{{cliente.nome}}" title="{{cliente.nome}}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- End Swiper Wrapper -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <!-- End Swiper Clients -->
+                </div>
+                <!-- End Clients -->
+            {% endif %}
+        </div>
+
+    </div>
+    <!-- End Latest Projects -->
+    
+    <!-- Galerie -->
+    <div id="galerie">
+        <div class="section-seperator">
+            <div class="content-md container">
+                <div class="row margin-b-40">
+                    <div class="col-sm-6">
+                        <a href="#"><h2>Galeria</h2></a>
+                        <p>Conheça melhor nosso trabalho conferindo a galeria.</p>
+                    </div>
+                </div>
+                <!--// end row -->
+
+                <!-- Masonry Grid -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
+                        <img class="full-width img-responsive galeria-img-home" src="https://www.caes-e-cia.com.br//admin/storage/Imagens/materias/aquarismo452.jpg" alt="Album Image">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
+                        <img class="full-width img-responsive galeria-img-home" src="http://www.maradaspetshop.com.br/imagens/pet-shop/loja-de-aquarismo.jpg" alt="Album Image">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
+                        <img class="full-width img-responsive galeria-img-home" src="https://img.olx.com.br/images/84/841819111231683.jpg" alt="Album Image">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
+                        <img class="full-width img-responsive galeria-img-home" src="https://http2.mlstatic.com/lagos-ornamentais-D_NQ_NP_590521-MLB20782363345_062016-F.jpg" alt="Album Image">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
+                        <img class="full-width img-responsive galeria-img-home" src="https://img.clasf.com.br/2017/06/24/Lagos-ornamentais-e-Aqurios-20170624175509.jpg" alt="Album Image">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
+                        <img class="full-width img-responsive galeria-img-home" src="http://portalexpressao.com.br/wp-content/uploads/2018/03/lago-ornamental.jpg" alt="Album Image">
+                    </div>
+                </div>
+                <!-- End Masonry Grid -->
+            </div>
+        </div>
+    </div>
+    <!-- End Galerie -->
+
+
+    <!-- Contact -->
+    <div id="contact">
+        <!-- Contact List -->
+        <div class="section-seperator">
+            <div class="content-lg container">
+                <div class="row">
+                    <!-- Contact List -->
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <h3>Loja</h3>
+                        <ul class="list-unstyled contact-list">
+                            <li>
+                                <i class="margin-r-10 color-base icon-call-out"></i> 
+                                <a href="tel:+552422361418">(24) 2236-1418</a>
+                            </li>
+                            <li>
+                                <i class="margin-r-10 color-base icon-envelope"></i>
+                                <a href="mailto:aquariomaniacos@bol.com.br">aquariomaniacos@bol.com.br</a>
+                            </li>
+                            <li>
+                                <i class="margin-r-10 color-base fa fa-map-marker"></i>
+                                <a href="https://www.google.com/maps?client=ubuntu&channel=fs&q=aquariomaniacos&oe=utf-8&um=1&ie=UTF-8&sa=X&ved=0ahUKEwiJ8-Km2c3gAhWUHbkGHWEuBBQQ_AUIDigB">
+                                    Estr. União e Indústria, 7974 - Bom Sucesso, Petrópolis - RJ, 25720-066
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <h3>Reylen</h3>
+                        <ul class="list-unstyled contact-list">
+                            <li>
+                                <i class="margin-r-10 color-base icon-call-out"></i> 
+                                <a href="tel:+552422361418">(24) 99256-0087</a>
+                            </li>
+                            <li>
+                                <i class="margin-r-10 color-base icon-envelope"></i>
+                                <a href="mailto:aquariomaniacos@bol.com.br">aquariomaniacos@bol.com.br</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 sm-margin-b-50">
+                        <h3>Andreza</h3>
+                        <ul class="list-unstyled contact-list">
+                            <li>
+                                <i class="margin-r-10 color-base icon-call-out"></i> 
+                                <a href="tel:+552422361418">(24) 99251-9967</a>
+                            </li>
+                            <li>
+                                <i class="margin-r-10 color-base icon-envelope"></i>
+                                <a href="mailto:aquariomaniacos@bol.com.br">aquariomaniacos@bol.com.br</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Contact List -->
+                </div>
+                <!--// end row -->
+
+                <br/><br/>
+
+                <div class="row">
+                    <h3>Fale Conosco</h3>
+
+                    {% if message %}
+                        <div class="alert alert-success fade in alert-dismissable" style="margin-top:18px;">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                            <strong>Obrigado pelo contato.</strong>  Retornaremos o mais breve possível.
+                        </div>
+                    {% endif %}
+
+                    <form id="form-contato" class="form-contato" autocomplete="off" method="post" enctype="multipart/form-data" role="form">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form.nome }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form.telefone }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form.descricao }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="submit" value="Enviar Mensagem" class="btn-theme btn-theme-sm btn-white-bg text-uppercase">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!-- End Contact List -->
+        
+
+        <!-- Google Map -->
+        <div class="map height-300">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3688.286900506427!2d-43.138453985043085!3d-22.418224885262486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99aa4ca5d89121%3A0x6f29c2967da6920f!2sAquariomaniacos!5e0!3m2!1spt-BR!2sbr!4v1504277674967" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+
+    </div>
+    <!-- End Contact -->
+
+{% endblock %}
+
+{% block javascript %}{% endblock %}

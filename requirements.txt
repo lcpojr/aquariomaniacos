@@ -1,0 +1,18 @@
+# Application
+Django==2.1.5
+django-robots
+
+# Image
+Pillow
+
+# Authentication
+django-allauth
+
+# Database
+psycopg2-binary
+
+# Code quality
+pylint
+django-lint
+pytest
+autopep8

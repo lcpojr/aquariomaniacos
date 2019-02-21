@@ -1,0 +1,12 @@
+# Envs
+/virtualenv/*
+
+# Pycache
+apps/*/__pycache__/
+configs/*/__pycache__/
+*.pyc
+
+# Lib static files
+/static/admin/*
+/static/rest_framework/*
+/static/facebook/*

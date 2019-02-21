@@ -1,0 +1,7 @@
+[program:gunicorn]
+command=/usr/bin/gunicorn aquariomaniacos.wsgi:application -c /home/root/aquariomaniacos/configs/gunicorn_conf
+directory=/home/root/aquariomaniacos/aquariomaniacos
+user=root
+autostart=true
+autorestart=true
+redirect_stderr=true

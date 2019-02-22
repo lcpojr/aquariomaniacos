@@ -14,12 +14,12 @@ server {
 
     # Your Django project's media files - amend as required
     location /media  {
-        alias /home/root/aquariomaniacos/mediafiles;
+        alias /var/www/aquariomaniacos.com.br/media/;
     }
 
     # your Django project's static files - amend as required
     location /static {
-        alias /home/root/aquariomaniacos/staticfiles;
+        alias /var/www/aquariomaniacos.com.br/static/;
     }
 
     # Proxy the static assests for the Django Admin panel

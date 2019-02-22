@@ -1,3 +1,0 @@
-bind = "127.0.0.1:8000"
-logfile = "/home/root/logs/gunicorn.log"
-workers = 3

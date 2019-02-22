@@ -177,76 +177,6 @@
         </div>
     </div>
     <!-- End About -->
-
-    <!-- Latest Projects -->
-    <div id="projects">
-        <div class="content-lg container">
-            {% if projetos %}
-                <div class="row margin-b-40">
-                    <div class="col-sm-6">
-                        <h2>
-                            <a href="{% url 'website:projetorecente-lista' %}">
-                                Projetos Recentes
-                            </a>
-                        </h2>
-                        <p>
-                            Conheça um pouco sobre nosso trabalho e acompanhe nossos projetos.
-                        </p>
-                    </div>
-                </div>
-                <!--// end row -->
-
-                <div class="row">
-                    {% for projeto in projetos %}
-                        <!-- Latest Projects -->
-                        <div class="col-sm-4 sm-margin-b-50 projeto-margin">
-                            <div class="margin-b-20">
-                                <a href="{% url 'website:projetorecente' projeto.pk %}">
-                                    <img class="img-responsive projeto-image" src="/media/{{projeto.imagem}}" alt="Ultimos Projetos">
-                                </a>
-                            </div>
-                            <h4>
-                                <a href="{% url 'website:projetorecente' projeto.pk %}">
-                                    {{projeto.titulo}}
-                                </a> 
-                                <span class="text-uppercase margin-l-20">{{projeto.tipo}}</span>
-                            </h4>
-                            <p>{{projeto.resumo}}</p>
-                            <a class="link" href="{% url 'website:projetorecente' projeto.pk %}">Ver Mais</a>
-                        </div>
-                        <!-- End Latest Projects -->
-                        
-                    {% endfor %}
-                </div>
-                <!--// end row -->
-            {% endif %}
-
-            {% if clientes %}
-                <!-- Clients -->
-                <div class="content-lg container" id="client">
-                    <h2>Alguns de nossos clientes</h2>
-                    <!-- Swiper Clients -->
-                    <div class="swiper-slider swiper-clients">
-                        <!-- Swiper Wrapper -->
-                        <div class="swiper-wrapper">
-                            {% for cliente in clientes %}
-                                <div class="swiper-slide">
-                                    <img class="swiper-clients-img cliente-image" src="/media/{{cliente.imagem}}" alt="{{cliente.nome}}" title="{{cliente.nome}}">
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <!-- End Swiper Wrapper -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                    </div>
-                    <!-- End Swiper Clients -->
-                </div>
-                <!-- End Clients -->
-            {% endif %}
-        </div>
-
-    </div>
-    <!-- End Latest Projects -->
     
     <!-- Galerie -->
     <div id="galerie">
@@ -263,22 +193,22 @@
                 <!-- Masonry Grid -->
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
-                        <img class="full-width img-responsive galeria-img-home" src="https://www.caes-e-cia.com.br//admin/storage/Imagens/materias/aquarismo452.jpg" alt="Album Image">
+                        <img class="full-width img-responsive galeria-img-home" src="/static/img/custom/aquarismo452.jpg" alt="Album Image">
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
-                        <img class="full-width img-responsive galeria-img-home" src="http://www.maradaspetshop.com.br/imagens/pet-shop/loja-de-aquarismo.jpg" alt="Album Image">
+                        <img class="full-width img-responsive galeria-img-home" src="/static/img/custom/loja-de-aquarismo.jpg" alt="Album Image">
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
-                        <img class="full-width img-responsive galeria-img-home" src="https://img.olx.com.br/images/84/841819111231683.jpg" alt="Album Image">
+                        <img class="full-width img-responsive galeria-img-home" src="/static/img/custom/841819111231683.jpg" alt="Album Image">
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
-                        <img class="full-width img-responsive galeria-img-home" src="https://http2.mlstatic.com/lagos-ornamentais-D_NQ_NP_590521-MLB20782363345_062016-F.jpg" alt="Album Image">
+                        <img class="full-width img-responsive galeria-img-home" src="/static/img/custom/lagos-ornamentais-D_NQ_NP_590521-MLB20782363345_062016-F.jpg" alt="Album Image">
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
-                        <img class="full-width img-responsive galeria-img-home" src="https://img.clasf.com.br/2017/06/24/Lagos-ornamentais-e-Aqurios-20170624175509.jpg" alt="Album Image">
+                        <img class="full-width img-responsive galeria-img-home" src="/static/img/custom/Lagos-ornamentais-e-Aqurios-20170624175509.jpg" alt="Album Image">
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-4 md-margin-b-30 galeria-margin">
-                        <img class="full-width img-responsive galeria-img-home" src="http://portalexpressao.com.br/wp-content/uploads/2018/03/lago-ornamental.jpg" alt="Album Image">
+                        <img class="full-width img-responsive galeria-img-home" src="/static/img/custom/lago-ornamental.jpg" alt="Album Image">
                     </div>
                 </div>
                 <!-- End Masonry Grid -->
@@ -287,6 +217,40 @@
     </div>
     <!-- End Galerie -->
 
+    <!-- Latest Projects -->
+    <div id="projects">
+        <div class="content-lg container">
+            <!-- Clients -->
+            <div class="content-lg container" id="client">
+                <h2>Alguns de nossos clientes</h2>
+                <!-- Swiper Clients -->
+                <div class="swiper-slider swiper-clients">
+                    <!-- Swiper Wrapper -->
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img class="swiper-clients-img cliente-image" src="/static/img/custom/vemai_marca_1.jpg" alt="Globo" title="Globo">
+                        </div>
+                        <div class="swiper-slide">
+                            <img class="swiper-clients-img cliente-image" src="/static/img/custom/Vale-logo-880x660.png" alt="Globo" title="Globo">
+                        </div>       
+                        <div class="swiper-slide">
+                            <img class="swiper-clients-img cliente-image" src="/static/img/custom/Quinta+Do+Lago2.jpg" alt="Globo" title="Globo">
+                        </div>            
+                        <div class="swiper-slide">
+                            <img class="swiper-clients-img cliente-image" src="/static/img/custom/logo35.png" alt="Globo" title="Globo">
+                        </div>          
+                    </div>
+                    <!-- End Swiper Wrapper -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <!-- End Swiper Clients -->
+            </div>
+            <!-- End Clients -->
+        </div>
+
+    </div>
+    <!-- End Latest Projects -->
 
     <!-- Contact -->
     <div id="contact">
